@@ -1,0 +1,74 @@
+{
+  "assets": "1.7.10",
+  "version": "1.1.1",
+  "server-ip": "false:mc.soraworld.org",
+  "mainClass": "net.minecraft.launchwrapper.Launch",
+  "modsIndex": {
+    "sha1": "f90ca2878ba3141d32d949ea7f665855dd073c65",
+    "path": "mods/mods.json"
+  },
+  "npcsIndex": {
+    "sha1": "f90ca2878ba3141d32d949ea7f665855dd073c65",
+    "path": "customnpcs/npcs.json"
+  },
+  "packIndex": {
+    "sha1": "f90ca2878ba3141d32d949ea7f665855dd073c65",
+    "path": "resourcepacks/packs.json"
+  },
+  "assetsIndex": {
+    "sha1": "f90ca2878ba3141d32d949ea7f665855dd073c65",
+    "path": "assets/indexes/1.7.10.json"
+  },
+  "configIndex": {
+    "sha1": "f90ca2878ba3141d32d949ea7f665855dd073c65",
+    "path": "config/config.json"
+  },
+  "clientIndex": {
+    "sha1": "f90ca2878ba3141d32d949ea7f665855dd073c65",
+    "path": "client/client.jar"
+  },
+  "natives": [
+    {
+      "os": [
+        "osx"
+      ],
+      "sha1": "62503ee712766cf77f97252e5902786fd834b8c5",
+      "path": "tv/twitch/twitch-platform/5.16/twitch-platform-5.16-natives-osx.jar"
+    },
+    {
+      "os": [
+        "win32"
+      ],
+      "sha1": "62503ee712766cf77f97252e5902786fd834b8c5",
+      "path": "tv/twitch/twitch-platform/5.16/twitch-platform-5.16-natives-windows-32.jar"
+    },
+    {
+      "os": [
+        "win64"
+      ],
+      "sha1": "62503ee712766cf77f97252e5902786fd834b8c5",
+      "path": "tv/twitch/twitch-platform/5.16/twitch-platform-5.16-natives-windows-64.jar"
+    }
+  ],
+  "libraries": [
+    {
+      "os": [
+        "linux",
+        "osx",
+        "win32",
+        "win64"
+      ],
+      "sha1": "f90ca2878ba3141d32d949ea7f665855dd073c65",
+      "path": "com/google/guava/17.0/guava-17.0.jar"
+    },
+    {
+      "os": [
+        "osx",
+        "win32",
+        "win64"
+      ],
+      "sha1": "f90ca2878ba3141d32d949ea7f665855dd073c65",
+      "path": "libraries/com/google/guava/17.0/guava-17.0.jar"
+    }
+  ]
+}

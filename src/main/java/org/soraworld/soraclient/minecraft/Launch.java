@@ -8,7 +8,6 @@ package org.soraworld.soraclient.minecraft;
 
 import com.google.gson.Gson;
 import org.apache.commons.io.FileUtils;
-import org.soraworld.soraclient.minecraft.version.Minecraft;
 
 import java.io.File;
 import java.io.IOException;
@@ -19,7 +18,7 @@ import java.util.List;
 public class Launch {
 
     public static List<String> launch(String username, String gameDir, String version, String uuid, String xmx) throws IOException {
-        List<String> jvmArgs = new ArrayList<String>();
+        List<String> jvmArgs = new ArrayList<>();
         String versionPath = gameDir + "/versions/" + version + "/" + version;
         File jsonFile = new File(versionPath + ".json");
         String json = FileUtils.readFileToString(jsonFile, Charset.defaultCharset());
@@ -48,7 +47,7 @@ public class Launch {
         jvmArgs.add("--userType");
         jvmArgs.add("Legacy");
         jvmArgs.add("--assetIndex");
-        jvmArgs.add(minecraft.assetIndex.id);
+        jvmArgs.add(minecraft.assets);
         jvmArgs.add("--accessToken");
         jvmArgs.add(uuid);
         jvmArgs.add("--versionType");

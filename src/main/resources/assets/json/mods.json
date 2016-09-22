@@ -1,0 +1,10 @@
+{
+  "mods": [
+    {
+      "name": "",
+      "sha1": "",
+      "path": "mods/mod.jar",
+      "core": true
+    }
+  ]
+}

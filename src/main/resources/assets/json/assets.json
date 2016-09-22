@@ -1,0 +1,12 @@
+{
+  "objects": [
+    {
+      "sha1": "bf7fadaf64945f6b31c803d086ac6a652aabef9b",
+      "path": "minecraft/sounds/mob/chicken/step2.ogg"
+    },
+    {
+      "sha1": "92750c5f93c312ba9ab413d546f32190c56d6f1f",
+      "path": "minecraft/icons/icon_32x32.png"
+    }
+  ]
+}

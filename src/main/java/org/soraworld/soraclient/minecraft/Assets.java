@@ -1,18 +1,17 @@
 /*******************************************************************************
- * Created by Himmelt on 2016/9/20.
+ * Created by Himmelt on 2016/9/22.
  * Copyright (c) 2015-2016. Himmelt All rights reserved.
  * https://opensource.org/licenses/MIT
  ******************************************************************************/
 
-package org.soraworld.soraclient.minecraft.version;
+package org.soraworld.soraclient.minecraft;
 
 import com.google.gson.annotations.SerializedName;
+import org.soraworld.soraclient.minecraft.gson.Index;
 
-public class Natives {
-    @SerializedName("windows")
-    public String windows;
-    @SerializedName("osx")
-    public String osx;
-    @SerializedName("linux")
-    public String linux;
+import java.util.List;
+
+public class Assets {
+    @SerializedName("objects")
+    public List<Index> objects;
 }

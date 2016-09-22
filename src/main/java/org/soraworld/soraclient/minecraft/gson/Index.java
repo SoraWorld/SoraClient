@@ -1,21 +1,16 @@
 /*******************************************************************************
- * Created by Himmelt on 2016/9/20.
+ * Created by Himmelt on 2016/9/22.
  * Copyright (c) 2015-2016. Himmelt All rights reserved.
  * https://opensource.org/licenses/MIT
  ******************************************************************************/
 
-package org.soraworld.soraclient.minecraft.version;
+package org.soraworld.soraclient.minecraft.gson;
 
 import com.google.gson.annotations.SerializedName;
 
-public class Rules {
-    @SerializedName("action")
-    public String action;
-    @SerializedName("os")
-    public OS os;
-
-    private class OS {
-        @SerializedName("name")
-        public String name;
-    }
+public class Index {
+    @SerializedName("sha1")
+    public String sha1;
+    @SerializedName("path")
+    public String path;
 }

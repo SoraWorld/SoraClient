@@ -6,6 +6,12 @@
 
 package org.soraworld.soraclient.minecraft;
 
-public class Npcs {
+import com.google.gson.annotations.SerializedName;
+import org.soraworld.soraclient.minecraft.gson.Index;
 
+import java.util.List;
+
+public class Npcs {
+    @SerializedName("objects")
+    public List<Index> objects;
 }

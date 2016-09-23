@@ -7,11 +7,11 @@
 package org.soraworld.soraclient.minecraft;
 
 import com.google.gson.annotations.SerializedName;
-import org.soraworld.soraclient.minecraft.gson.Mod;
+import org.soraworld.soraclient.minecraft.gson.ModIndex;
 
 import java.util.List;
 
 public class Mods {
     @SerializedName("mods")
-    public List<Mod> mods;
+    public List<ModIndex> mods;
 }

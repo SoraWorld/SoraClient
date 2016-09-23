@@ -6,6 +6,12 @@
 
 package org.soraworld.soraclient.minecraft;
 
-public class Pack {
+import com.google.gson.annotations.SerializedName;
+import org.soraworld.soraclient.minecraft.gson.NameIndex;
 
+import java.util.List;
+
+public class Pack {
+    @SerializedName("packs")
+    public List<NameIndex> packs;
 }

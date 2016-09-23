@@ -1,0 +1,9 @@
+{
+  "packs": [
+    {
+      "name": "ocdpack",
+      "sha1": "",
+      "path": "resourcepacks/ocdpack.zip"
+    }
+  ]
+}

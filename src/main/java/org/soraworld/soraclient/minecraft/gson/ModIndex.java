@@ -4,14 +4,13 @@
  * https://opensource.org/licenses/MIT
  ******************************************************************************/
 
-package org.soraworld.soraclient.minecraft;
+package org.soraworld.soraclient.minecraft.gson;
 
 import com.google.gson.annotations.SerializedName;
-import org.soraworld.soraclient.minecraft.gson.KeepIndex;
 
 import java.util.List;
 
-public class Config {
-    @SerializedName("configs")
-    public List<KeepIndex> configs;
+public class ModIndex extends NameIndex {
+    @SerializedName("core")
+    public List<String> core;
 }

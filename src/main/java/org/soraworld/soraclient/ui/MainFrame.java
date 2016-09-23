@@ -69,25 +69,22 @@ public class MainFrame {
     public void LaunchGame() {
         Thread task = new Thread(() -> {
             manger.addTask(new DownloadTask("https://dn-stc.qbox.me/setup-1.1.exe", "./task-1.exe"));
-            manger.addTask(new DownloadTask("https://dn-stc.qbox.me/setup-1.1.exe", "./task-2.exe"));
-            manger.addTask(new DownloadTask("https://dn-stc.qbox.me/setup-1.1.exe", "./task-3.exe"));
-            manger.addTask(new DownloadTask("https://dn-stc.qbox.me/setup-1.1.exe", "./task-4.exe"));
-            manger.addTask(new DownloadTask("https://dn-stc.qbox.me/setup-1.1.exe", "./task-5.exe"));
+            //manger.addTask(new DownloadTask("https://dn-stc.qbox.me/setup-1.1.exe", "./task-2.exe"));
+            //manger.addTask(new DownloadTask("https://dn-stc.qbox.me/setup-1.1.exe", "./task-3.exe"));
+            //manger.addTask(new DownloadTask("https://dn-stc.qbox.me/setup-1.1.exe", "./task-4.exe"));
+            //manger.addTask(new DownloadTask("https://dn-stc.qbox.me/setup-1.1.exe", "./task-5.exe"));
             manger.shutdown();
-            System.out.print("Task Add Finish");
+            System.out.println("Task Add Finish");
             while (!manger.isTerminated()) {
                 try {
-                    Thread.sleep(500);
+                    Thread.sleep(50);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-                Platform.runLater(() -> left_game.setText(String.valueOf(manger.getTask(1).getProgress())));
+                Platform.runLater(() -> left_game.setText(String.valueOf(manger.getProgress())));
             }
         });
-
         task.start();
-
         System.out.println("Thread Started");
-
     }
 }

@@ -10,24 +10,49 @@ import com.github.axet.wget.WGet;
 import com.github.axet.wget.info.DownloadInfo;
 import com.github.axet.wget.info.URLInfo;
 import com.github.axet.wget.info.ex.DownloadInterruptedError;
+import org.soraworld.soraclient.minecraft.gson.Index;
 
 import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.concurrent.atomic.AtomicBoolean;
 
+import static org.soraworld.soraclient.system.CONFIG.DLHEAD;
+
 public class DownloadTask implements Runnable {
 
-    private String path;
+    private File target;
     private float progress;
     private DownloadInfo info;
     private long PID;
 
-    public DownloadTask(String source, String _path) {
-        path = _path;
+    public DownloadTask(String source, String path) {
+        target = new File(path);
         progress = 0;
         try {
             info = new DownloadInfo(new URL(source));
+            info.extract();
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public DownloadTask(String source, File file) {
+        target = file;
+        progress = 0;
+        try {
+            info = new DownloadInfo(new URL(source));
+            info.extract();
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public DownloadTask(Index library) {
+        target = new File("./" + library.path);
+        progress = 0;
+        try {
+            info = new DownloadInfo(new URL(DLHEAD + library.path));
             info.extract();
         } catch (MalformedURLException e) {
             e.printStackTrace();
@@ -44,7 +69,11 @@ public class DownloadTask implements Runnable {
 
     public void run() {
         try {
-            File target = new File(path);
+            if (target.exists()) {
+                if (!target.delete()) {
+                    throw new DownloadInterruptedError();
+                }
+            }
             WGet wGet = new WGet(info, target);
             wGet.download(new AtomicBoolean(false), () -> {
                 progress = info.getCount() / (float) info.getLength();

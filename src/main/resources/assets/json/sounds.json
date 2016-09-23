@@ -1,0 +1,447 @@
+{
+  "sound.somesound": {
+    "category": "player",
+    "sounds": [
+      "randomsound1",
+      "radomsound1"
+    ]
+  },
+  "musc.somesong": {
+    "category": "player",
+    "sounds": [
+      {
+        "name": "some song",
+        "stream": true
+      },
+      {
+        "name": "random other song",
+        "stream": true
+      }
+    ]
+  },
+  "musc.someothersong": {
+    "category": "player",
+    "sounds": [
+      {
+        "name": "song name",
+        "stream": true
+      }
+    ]
+  },
+  "1-Two Steps From Hell - Victory": {
+    "sounds": [
+      {
+        "name": "Cou/Two Steps From Hell - Victory",
+        "stream": true
+      }
+    ]
+  },
+  "1-Audio Machine - Shadowfall": {
+    "sounds": [
+      {
+        "name": "Cou/Audio Machine - Shadowfall",
+        "stream": true
+      }
+    ]
+  },
+  "1-John Dreamer - Brotherhood": {
+    "sounds": [
+      {
+        "name": "Cou/John Dreamer - Brotherhood",
+        "stream": true
+      }
+    ]
+  },
+  "1-Iceloki - \u9b54\u6cd5\u5c11\u5973\u306e\u5bbf\u547d": {
+    "sounds": [
+      {
+        "name": "Cou/Iceloki - \u9b54\u6cd5\u5c11\u5973\u306e\u5bbf\u547d",
+        "stream": true
+      }
+    ]
+  },
+  "1-Brand X Music - Dogs of War": {
+    "sounds": [
+      {
+        "name": "Cou/Brand X Music - Dogs of War",
+        "stream": true
+      }
+    ]
+  },
+  "1-Bassy - Sis puella magica! (Chamber Version)": {
+    "sounds": [
+      {
+        "name": "zo/Bassy - Sis puella magica! (Chamber Version)",
+        "stream": true
+      }
+    ]
+  },
+  "1-Secret Messenger - \u2162 Sis puella remillia!": {
+    "sounds": [
+      {
+        "name": "zo/Secret Messenger - \u2162 Sis puella remillia!",
+        "stream": true
+      }
+    ]
+  },
+  "1-\u795e\u524d\u6681 - \u8868\u91cc": {
+    "sounds": [
+      {
+        "name": "zo/\u795e\u524d\u6681 - \u8868\u91cc",
+        "stream": true
+      }
+    ]
+  },
+  "1-\u795e\u524d\u6681 - \u4f2a\u7269": {
+    "sounds": [
+      {
+        "name": "zo/\u795e\u524d\u6681 - \u4f2a\u7269",
+        "stream": true
+      }
+    ]
+  },
+  "1-\u6fa4\u91ce\u5f18\u4e4b - MKAlieZ": {
+    "sounds": [
+      {
+        "name": "zo/\u6fa4\u91ce\u5f18\u4e4b - MKAlieZ",
+        "stream": true
+      }
+    ]
+  },
+  "1-Eric Serra - I Am Everywhere": {
+    "sounds": [
+      {
+        "name": "zo/Eric Serra - I Am Everywhere",
+        "stream": true
+      }
+    ]
+  },
+  "1-Eric Serra - Taipei Airport": {
+    "sounds": [
+      {
+        "name": "zo/Eric Serra - Taipei Airport",
+        "stream": true
+      }
+    ]
+  },
+  "1-Lusy OST - 12": {
+    "sounds": [
+      {
+        "name": "zo/Lusy OST - 12",
+        "stream": true
+      }
+    ]
+  },
+  "1-Eric Serra - Choose To Reproduce": {
+    "sounds": [
+      {
+        "name": "zo/Eric Serra - Choose To Reproduce",
+        "stream": true
+      }
+    ]
+  },
+  "1-Key Sounds Label - \u99ac\u9e7f\u3075\u305f\u308a": {
+    "sounds": [
+      {
+        "name": "zo/Key Sounds Label - \u99ac\u9e7f\u3075\u305f\u308a",
+        "stream": true
+      }
+    ]
+  },
+  "1-Key Sounds Label - \u6f6e\u9cf4\u308a": {
+    "sounds": [
+      {
+        "name": "zo/Key Sounds Label - \u6f6e\u9cf4\u308a",
+        "stream": true
+      }
+    ]
+  },
+  "1-Hans Zimmer - Panic, Sheer Bloody Panic": {
+    "sounds": [
+      {
+        "name": "zo/Hans Zimmer - Panic, Sheer Bloody Panic",
+        "stream": true
+      }
+    ]
+  },
+  "1-Dvar - Ko Ki Ki": {
+    "sounds": [
+      {
+        "name": "zo/Dvar - Ko Ki Ki",
+        "stream": true
+      }
+    ]
+  },
+  "1-The XX - Intro - intro": {
+    "sounds": [
+      {
+        "name": "zo/The XX - Intro - intro",
+        "stream": true
+      }
+    ]
+  },
+  "1-(U.N.\u30aa\u30fc\u30a8\u30f3\u306f\u5f7c\u5973\u306a\u306e\u304b\uff1f)Akt - \u5343\u5e74\u306e\u5b64\u72ec": {
+    "sounds": [
+      {
+        "name": "zo/(U.N.\u30aa\u30fc\u30a8\u30f3\u306f\u5f7c\u5973\u306a\u306e\u304b\uff1f)Akt - \u5343\u5e74\u306e\u5b64\u72ec",
+        "stream": true
+      }
+    ]
+  },
+  "1-Dxtliant Child - U.N.\u30aa\u30fc\u30a8\u30f3\u306f\u5f7c\u5973\u306a\u306e\u304b\uff1f": {
+    "sounds": [
+      {
+        "name": "zo/Dxtliant Child - U.N.\u30aa\u30fc\u30a8\u30f3\u306f\u5f7c\u5973\u306a\u306e\u304b\uff1f",
+        "stream": true
+      }
+    ]
+  },
+  "1-DJ OKAWARI - Flower Dance": {
+    "sounds": [
+      {
+        "name": "zo/DJ OKAWARI - Flower Dance",
+        "stream": true
+      }
+    ]
+  },
+  "1-Ken Arai - NEXT TO YOU": {
+    "sounds": [
+      {
+        "name": "zo/Ken Arai - NEXT TO YOU",
+        "stream": true
+      }
+    ]
+  },
+  "1-Robert Bonfiglio - Time In A Bottle": {
+    "sounds": [
+      {
+        "name": "zo/Robert Bonfiglio - Time In A Bottle",
+        "stream": true
+      }
+    ]
+  },
+  "1-\u30b2\u30fc\u30e0\u30fb\u30df\u30e5\u30fc\u30b8\u30c3\u30af - Town": {
+    "sounds": [
+      {
+        "name": "zo/\u30b2\u30fc\u30e0\u30fb\u30df\u30e5\u30fc\u30b8\u30c3\u30af - Town",
+        "stream": true
+      }
+    ]
+  },
+  "1-\u9ed2\u77f3\u3072\u3068\u307f - If I were a Bird": {
+    "sounds": [
+      {
+        "name": "zo/\u9ed2\u77f3\u3072\u3068\u307f - If I were a Bird",
+        "stream": true
+      }
+    ]
+  },
+  "1-\u795e\u524d\u6681 - \u30d5\u30f3\u30d5\u30f3\u30d5\u30f3\u266a\u3060\u3088\u3001\u3089\u304d\u2606\u3059\u305f": {
+    "sounds": [
+      {
+        "name": "zo/\u795e\u524d\u6681 - \u30d5\u30f3\u30d5\u30f3\u30d5\u30f3\u266a\u3060\u3088\u3001\u3089\u304d\u2606\u3059\u305f",
+        "stream": true
+      }
+    ]
+  },
+  "1-\u308a\u3059\u305f\u308b - U.N.\u30aa\u30fc\u30a8\u30f3\u306f\u5f7c\u5973\u306a\u306e\u304b\uff1f": {
+    "sounds": [
+      {
+        "name": "zo/\u308a\u3059\u305f\u308b - U.N.\u30aa\u30fc\u30a8\u30f3\u306f\u5f7c\u5973\u306a\u306e\u304b\uff1f",
+        "stream": true
+      }
+    ]
+  },
+  "1-\u795e\u524d\u6681 - \u3053\u306a\u305f\u306e\u30c6\u30fc\u30de\u3001\u30a4\u30f3\u30c9\u30d0\u30fc\u30b8\u30e7\u30f3": {
+    "sounds": [
+      {
+        "name": "zo/\u795e\u524d\u6681 - \u3053\u306a\u305f\u306e\u30c6\u30fc\u30de\u3001\u30a4\u30f3\u30c9\u30d0\u30fc\u30b8\u30e7\u30f3",
+        "stream": true
+      }
+    ]
+  },
+  "1-\u795e\u524d\u6681 - \u201c\u30d7\u30e9\u30c1\u30ca\u3080\u304b\u3064\u304f\u201d": {
+    "sounds": [
+      {
+        "name": "zo/\u795e\u524d\u6681 - \u201c\u30d7\u30e9\u30c1\u30ca\u3080\u304b\u3064\u304f\u201d",
+        "stream": true
+      }
+    ]
+  },
+  "1-Sing, R. Sing! - U.N.\u30aa\u30fc\u30a8\u30f3\u306f\u3084\u308b\u6c17\u3042\u308b\u306e\u30c3!\uff1f": {
+    "sounds": [
+      {
+        "name": "Sing, R. Sing! - U.N.\u30aa\u30fc\u30a8\u30f3\u306f\u3084\u308b\u6c17\u3042\u308b\u306e\u30c3!\uff1f",
+        "stream": true
+      }
+    ]
+  },
+  "1-Sing, R. Sing! - \u3059\u305f\u3063\u3061\u3085\u3050\u3089\u3063\u3061\u3085": {
+    "sounds": [
+      {
+        "name": "Sing, R. Sing! - \u3059\u305f\u3063\u3061\u3085\u3050\u3089\u3063\u3061\u3085",
+        "stream": true
+      }
+    ]
+  },
+  "1-\u5927\u5cf6\u30df\u30c1\u30eb - \u5b64\u72ec": {
+    "sounds": [
+      {
+        "name": "\u5927\u5cf6\u30df\u30c1\u30eb - \u5b64\u72ec",
+        "stream": true
+      }
+    ]
+  },
+  "1-\u5927\u5cf6\u30df\u30c1\u30eb - \u5144\u5f1f": {
+    "sounds": [
+      {
+        "name": "\u5927\u5cf6\u30df\u30c1\u30eb - \u5144\u5f1f",
+        "stream": true
+      }
+    ]
+  },
+  "1-\u5e7d\u9589\u30b5\u30c6\u30e9\u30a4\u30c8 - \u304a\u3066\u3093\u3070\u30d7\u30ec\u30ea\u30e5\u30fc\u30c9": {
+    "sounds": [
+      {
+        "name": "\u5e7d\u9589\u30b5\u30c6\u30e9\u30a4\u30c8 - \u304a\u3066\u3093\u3070\u30d7\u30ec\u30ea\u30e5\u30fc\u30c9",
+        "stream": true
+      }
+    ]
+  },
+  "1-S.E.N.S. - April Fool": {
+    "sounds": [
+      {
+        "name": "Ayu/S.E.N.S. - April Fool",
+        "stream": true
+      }
+    ]
+  },
+  "1-S.E.N.S. - \u7e01-\u3048\u306b\u3057-": {
+    "sounds": [
+      {
+        "name": "Ayu/S.E.N.S. - \u7e01-\u3048\u306b\u3057-",
+        "stream": true
+      }
+    ]
+  },
+  "1-Sing, R. Sing!-\u5e7c\u5973\u5e7b\u594f": {
+    "sounds": [
+      {
+        "name": "Ayu/Sing, R. Sing!-\u5e7c\u5973\u5e7b\u594f",
+        "stream": true
+      }
+    ]
+  },
+  "1-Falcom Sound Team jdk - \u30d7\u30b7\u30e5\u30b1\u306e\u5c4b\u6577": {
+    "sounds": [
+      {
+        "name": "Ayu/Falcom Sound Team jdk - \u30d7\u30b7\u30e5\u30b1\u306e\u5c4b\u6577",
+        "stream": true
+      }
+    ]
+  },
+  "1-Falcom Sound Team jdk - \u30d7\u30c3\u30af\u6751": {
+    "sounds": [
+      {
+        "name": "Ayu/Falcom Sound Team jdk - \u30d7\u30c3\u30af\u6751",
+        "stream": true
+      }
+    ]
+  },
+  "1-\u795e\u524d\u6681 - \u304a\u4eba\u3088\u3057": {
+    "sounds": [
+      {
+        "name": "Ayu/\u795e\u524d\u6681 - \u304a\u4eba\u3088\u3057",
+        "stream": true
+      }
+    ]
+  },
+  "1-\u53cc\u661f\u7269\u8bed - \u98ce\u4e0e\u82b1\u4e4b\u6b4c": {
+    "sounds": [
+      {
+        "name": "Ayu/\u53cc\u661f\u7269\u8bed - \u98ce\u4e0e\u82b1\u4e4b\u6b4c",
+        "stream": true
+      }
+    ]
+  },
+  "1-\u9f99\u7720\u4e4b\u8def": {
+    "sounds": [
+      {
+        "name": "Ayu/\u9f99\u7720\u4e4b\u8def",
+        "stream": true
+      }
+    ]
+  },
+  "1-\u4e9a\u7279\u9c81\u4e3b\u9898\u66f2 2001": {
+    "sounds": [
+      {
+        "name": "Ayu/\u4e9a\u7279\u9c81\u4e3b\u9898\u66f2 2001",
+        "stream": true
+      }
+    ]
+  },
+  "1-\u6700\u7ec8\u6218 -\u9b54\u738b\u7ef4\u65af\u5e15-": {
+    "sounds": [
+      {
+        "name": "Ayu/\u6700\u7ec8\u6218 -\u9b54\u738b\u7ef4\u65af\u5e15-",
+        "stream": true
+      }
+    ]
+  },
+  "1-\u30af\u30ed\u30c3\u30d7\u6d1e\u7a9f": {
+    "sounds": [
+      {
+        "name": "Ayu/\u30af\u30ed\u30c3\u30d7\u6d1e\u7a9f",
+        "stream": true
+      }
+    ]
+  },
+  "1-Ori\u8ff7\u5931\u68ee\u6797_Gareth Coker - Home of the Gumon": {
+    "sounds": [
+      {
+        "name": "ori/Gareth Coker - Home of the Gumon",
+        "stream": true
+      }
+    ]
+  },
+  "1-jCreepyForest": {
+    "sounds": [
+      {
+        "name": "jCreepyForest",
+        "stream": true
+      }
+    ]
+  },
+  "1-jDanger": {
+    "sounds": [
+      {
+        "name": "jDanger",
+        "stream": true
+      }
+    ]
+  },
+  "1-jMain": {
+    "sounds": [
+      {
+        "name": "jMain",
+        "stream": true
+      }
+    ]
+  },
+  "1-jWork To Be Done": {
+    "sounds": [
+      {
+        "name": "jWork To Be Done",
+        "stream": true
+      }
+    ]
+  },
+  "1-To the moon": {
+    "sounds": [
+      {
+        "name": "To the moon",
+        "stream": true
+      }
+    ]
+  }
+}

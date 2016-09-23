@@ -3,30 +3,6 @@
   "version": "1.1.1",
   "server-ip": "false:mc.soraworld.org",
   "mainClass": "net.minecraft.launchwrapper.Launch",
-  "modsIndex": {
-    "sha1": "f90ca2878ba3141d32d949ea7f665855dd073c65",
-    "path": "mods/mods.json"
-  },
-  "npcsIndex": {
-    "sha1": "f90ca2878ba3141d32d949ea7f665855dd073c65",
-    "path": "customnpcs/npcs.json"
-  },
-  "packIndex": {
-    "sha1": "f90ca2878ba3141d32d949ea7f665855dd073c65",
-    "path": "resourcepacks/packs.json"
-  },
-  "assetsIndex": {
-    "sha1": "f90ca2878ba3141d32d949ea7f665855dd073c65",
-    "path": "assets/indexes/1.7.10.json"
-  },
-  "configIndex": {
-    "sha1": "f90ca2878ba3141d32d949ea7f665855dd073c65",
-    "path": "config/config.json"
-  },
-  "clientIndex": {
-    "sha1": "f90ca2878ba3141d32d949ea7f665855dd073c65",
-    "path": "client/client.jar"
-  },
   "natives": [
     {
       "os": [
@@ -69,6 +45,32 @@
       ],
       "sha1": "f90ca2878ba3141d32d949ea7f665855dd073c65",
       "path": "libraries/com/google/guava/17.0/guava-17.0.jar"
+    }
+  ],
+  "jsonIndex": [
+    {
+      "sha1": "f90ca2878ba3141d32d949ea7f665855dd073c65",
+      "path": "mods/mods.json"
+    },
+    {
+      "sha1": "f90ca2878ba3141d32d949ea7f665855dd073c65",
+      "path": "customnpcs/npcs.json"
+    },
+    {
+      "sha1": "f90ca2878ba3141d32d949ea7f665855dd073c65",
+      "path": "resourcepacks/packs.json"
+    },
+    {
+      "sha1": "f90ca2878ba3141d32d949ea7f665855dd073c65",
+      "path": "assets/indexes/1.7.10.json"
+    },
+    {
+      "sha1": "f90ca2878ba3141d32d949ea7f665855dd073c65",
+      "path": "config/config.json"
+    },
+    {
+      "sha1": "f90ca2878ba3141d32d949ea7f665855dd073c65",
+      "path": "client/client.jar"
     }
   ]
 }

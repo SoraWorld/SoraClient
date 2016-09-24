@@ -2,25 +2,25 @@
   "config": [
     {
       "name": "服务器列表",
-      "sha1": "",
+      "sha1": "1234",
       "path": "servers.dat",
       "keep": true
     },
     {
       "name": "主配置",
-      "sha1": "",
+      "sha1": "1234",
       "path": "options.txt",
       "keep": false
     },
     {
       "name": "Optifine配置",
-      "sha1": "",
+      "sha1": "1234",
       "path": "optionsof.txt",
       "keep": false
     },
     {
       "name": "Waila采掘显示配置",
-      "sha1": "",
+      "sha1": "1234",
       "path": "config/WailaHarvestability.cfg",
       "keep": "true"
     }

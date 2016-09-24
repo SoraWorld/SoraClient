@@ -7,7 +7,7 @@
 package org.soraworld.soraclient.system;
 
 public class CONFIG {
-    public static String DLHEAD = "http://dl.soraworld.org/";
+    public static String DLHEAD = "https://dn-stc.qbox.me/";//https://dn-stc.qbox.me/.minecraft/client/client.json
     public static String SYSTEM = "win32";
 
     public CONFIG() {

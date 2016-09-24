@@ -10,7 +10,7 @@
 <BorderPane xmlns:fx="http://javafx.com/fxml/1" fx:id="mainFrame" maxHeight="-Infinity" maxWidth="-Infinity"
             minHeight="-Infinity" minWidth="-Infinity" onMouseDragged="#MouseDragged" onMousePressed="#MousePressed"
             prefHeight="400.0" prefWidth="600.0" style="-fx-border-color: #66BFFD;" stylesheets="@../css/style.css"
-            xmlns="http://javafx.com/javafx/8.0.60" fx:controller="org.soraworld.soraclient.ui.MainFrame">
+            xmlns="http://javafx.com/javafx/8.0.76-ea" fx:controller="org.soraworld.soraclient.ui.MainFrame">
   <center>
     <AnchorPane prefHeight="355.0" prefWidth="383.0"
                 style="-fx-background-color: #FAFAFA; -fx-border-color: #E1E1E2; -fx-border-width: 0 0 0 1;"
@@ -35,9 +35,21 @@
         <AnchorPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
                     AnchorPane.topAnchor="0.0">
           <children>
-            <Label text="11111111"/>
-            <Button mnemonicParsing="false" onMouseClicked="#LaunchGame" prefHeight="54.0" prefWidth="143.0" text="开始游戏"
-                    AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="10.0"/>
+            <VBox layoutY="190.0" spacing="5.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="20.0"
+                  AnchorPane.rightAnchor="20.0">
+              <children>
+                <TextField fx:id="userbox" promptText="请输入游戏ID" text="Himmelt">
+                  <font>
+                    <Font size="15.0"/>
+                  </font>
+                </TextField>
+                <Label fx:id="userhint" maxWidth="1.7976931348623157E308" textFill="RED"/>
+                <Button fx:id="btn_launch" maxWidth="1.7976931348623157E308" mnemonicParsing="false"
+                        onMouseClicked="#LaunchGame" prefHeight="50.0" text="开始游戏"/>
+                <Label fx:id="launchLabel" maxWidth="1.7976931348623157E308" textFill="#00e081" visible="false"/>
+                <ProgressBar fx:id="launchProgress" maxWidth="1.7976931348623157E308" progress="0.0" visible="false"/>
+              </children>
+            </VBox>
           </children>
         </AnchorPane>
       </children>
@@ -53,7 +65,7 @@
         <HBox layoutX="461.0" layoutY="10.0" spacing="5.0" AnchorPane.rightAnchor="5.0">
           <children>
             <Button mnemonicParsing="false" onMouseClicked="#MiniClicked" styleClass="icon" text="%icon.mini"/>
-            <Button mnemonicParsing="false" text="%icon.tray"/>
+            <Button mnemonicParsing="false" onMouseClicked="#TrayClicked" text="%icon.tray"/>
             <Button mnemonicParsing="false" onMouseClicked="#CloseClicked" styleClass="icon" text="%icon.close"/>
           </children>
         </HBox>

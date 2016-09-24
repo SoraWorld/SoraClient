@@ -1,0 +1,307 @@
+{
+  "assets": "1.7.10",
+  "server": "mc.soraworld.org",
+  "version": "SoraClient-2.0",
+  "mainClass": "net.minecraft.launchwrapper.Launch",
+  "natives": [
+    {
+      "os": [
+        "win32"
+      ],
+      "sha1": "18215140f010c05b9f86ef6f0f8871954d2ccebf",
+      "path": ".minecraft/libraries/natives/twitch-external-platform-4.5-natives-windows-32.jar"
+    },
+    {
+      "os": [
+        "win64"
+      ],
+      "sha1": "c3cde57891b935d41b6680a9c5e1502eeab76d86",
+      "path": ".minecraft/libraries/natives/twitch-external-platform-4.5-natives-windows-64.jar"
+    },
+    {
+      "os": [
+        "osx"
+      ],
+      "sha1": "62503ee712766cf77f97252e5902786fd834b8c5",
+      "path": ".minecraft/libraries/natives/twitch-platform-5.16-natives-osx.jar"
+    },
+    {
+      "os": [
+        "win32"
+      ],
+      "sha1": "7c6affe439099806a4f552da14c42f9d643d8b23",
+      "path": ".minecraft/libraries/natives/twitch-platform-5.16-natives-windows-32.jar"
+    },
+    {
+      "os": [
+        "win64"
+      ],
+      "sha1": "39d0c3d363735b4785598e0e7fbf8297c706a9f9",
+      "path": ".minecraft/libraries/natives/twitch-platform-5.16-natives-windows-64.jar"
+    },
+    {
+      "os": [
+        "linux"
+      ],
+      "sha1": "7ff832a6eb9ab6a767f1ade2b548092d0fa64795",
+      "path": ".minecraft/libraries/natives/jinput-platform-2.0.5-natives-linux.jar"
+    },
+    {
+      "os": [
+        "osx"
+      ],
+      "sha1": "53f9c919f34d2ca9de8c51fc4e1e8282029a9232",
+      "path": ".minecraft/libraries/natives/jinput-platform-2.0.5-natives-osx.jar"
+    },
+    {
+      "os": [
+        "win32",
+        "win64"
+      ],
+      "sha1": "385ee093e01f587f30ee1c8a2ee7d408fd732e16",
+      "path": ".minecraft/libraries/natives/jinput-platform-2.0.5-natives-windows.jar"
+    },
+    {
+      "os": [
+        "linux"
+      ],
+      "sha1": "aa9aae879af8eb378e22cfc64db56ec2ca9a44d1",
+      "path": ".minecraft/libraries/natives/lwjgl-platform-2.9.1-natives-linux.jar"
+    },
+    {
+      "os": [
+        "osx"
+      ],
+      "sha1": "2d12c83fdfbc04ecabf02c7bc8cc54d034f0daac",
+      "path": ".minecraft/libraries/natives/lwjgl-platform-2.9.1-natives-osx.jar"
+    },
+    {
+      "os": [
+        "win32",
+        "win64"
+      ],
+      "sha1": "4c517eca808522457dd95ee8fc1fbcdbb602efbe",
+      "path": ".minecraft/libraries/natives/lwjgl-platform-2.9.1-natives-windows.jar"
+    }
+  ],
+  "libraries": [
+    {
+      "sha1": "25fd97f72beca728112256938e03e8105b1b78cc",
+      "path": ".minecraft/libraries/forge-1.7.10-10.13.4.1614-1.7.10.jar"
+    },
+    {
+      "sha1": "01dcf0cc6cc1619cd19fac168aa67a70b8aefec4",
+      "path": ".minecraft/libraries/OptiFine-1.7.10_HD_U_D6.jar"
+    },
+    {
+      "sha1": "111e7bea9c968cdb3d06ef4632bf7ff0824d0f36",
+      "path": ".minecraft/libraries/launchwrapper-1.12.jar"
+    },
+    {
+      "sha1": "4333508b8dd8ee72aa4e39afa713b3a74579b773",
+      "path": ".minecraft/libraries/asm-all-5.0.3.jar"
+    },
+    {
+      "sha1": "b9ceaf854a4ec153b2555db43f99d80fd546ad48",
+      "path": ".minecraft/libraries/akka-actor_2.11-2.3.3.jar"
+    },
+    {
+      "sha1": "1f3adf92603f01bf19cc4dd782b9fc6eb3c3a55e",
+      "path": ".minecraft/libraries/config-1.2.1.jar"
+    },
+    {
+      "sha1": "dfa8bc42b181d5b9f1a5dd147f8ae308b893eb6f",
+      "path": ".minecraft/libraries/scala-actors-migration_2.11-1.1.0.jar"
+    },
+    {
+      "sha1": "56ea2e6c025e0821f28d73ca271218b8dd04926a",
+      "path": ".minecraft/libraries/scala-compiler-2.11.1.jar"
+    },
+    {
+      "sha1": "87213338cd5a153a7712cb574c0ddd2edfee0386",
+      "path": ".minecraft/libraries/scala-continuations-library_2.11-1.0.2.jar"
+    },
+    {
+      "sha1": "1f7371605d4ba42aa26d3443440c0083c587b4e9",
+      "path": ".minecraft/libraries/scala-continuations-plugin_2.11.1-1.0.2.jar"
+    },
+    {
+      "sha1": "0e11da23da3eabab9f4777b9220e60d44c1aab6a",
+      "path": ".minecraft/libraries/scala-library-2.11.1.jar"
+    },
+    {
+      "sha1": "f05d7345bf5a58924f2837c6c1f4d73a938e1ff0",
+      "path": ".minecraft/libraries/scala-parser-combinators_2.11-1.0.1.jar"
+    },
+    {
+      "sha1": "6580347e61cc7f8e802941e7fde40fa83b8badeb",
+      "path": ".minecraft/libraries/scala-reflect-2.11.1.jar"
+    },
+    {
+      "sha1": "b1cdd92bd47b1e1837139c1c53020e86bb9112ae",
+      "path": ".minecraft/libraries/scala-swing_2.11-1.0.1.jar"
+    },
+    {
+      "sha1": "7a80ec00aec122fba7cd4e0d4cdd87ff7e4cb6d0",
+      "path": ".minecraft/libraries/scala-xml_2.11-1.0.2.jar"
+    },
+    {
+      "sha1": "521616dc7487b42bef0e803bd2fa3faf668101d7",
+      "path": ".minecraft/libraries/lzma-0.0.1.jar"
+    },
+    {
+      "sha1": "6065cc95c661255349c1d0756657be17c29a4fd3",
+      "path": ".minecraft/libraries/jopt-simple-4.5.jar"
+    },
+    {
+      "sha1": "9c6ef172e8de35fd8d4d8783e4821e57cdef7445",
+      "path": ".minecraft/libraries/guava-17.0.jar"
+    },
+    {
+      "sha1": "90a3822c38ec8c996e84c16a3477ef632cbc87a3",
+      "path": ".minecraft/libraries/commons-lang3-3.3.2.jar"
+    },
+    {
+      "sha1": "4b75825a06139752bd800d9e29c5fd55b8b1b1e4",
+      "path": ".minecraft/libraries/netty-1.6.jar"
+    },
+    {
+      "sha1": "0807ae355ee63583becd7ea60e76aab1532bb42e",
+      "path": ".minecraft/libraries/realms-1.3.5.jar"
+    },
+    {
+      "sha1": "a698750c16740fd5b3871425f4cb3bbaa87f529d",
+      "path": ".minecraft/libraries/commons-compress-1.8.1.jar"
+    },
+    {
+      "sha1": "18f4247ff4572a074444572cee34647c43e7c9c7",
+      "path": ".minecraft/libraries/httpclient-4.3.3.jar"
+    },
+    {
+      "sha1": "f6f66e966c70a83ffbdb6f17a0919eaf7c8aca7f",
+      "path": ".minecraft/libraries/commons-logging-1.1.3.jar"
+    },
+    {
+      "sha1": "31fbbff1ddbf98f3aa7377c94d33b0447c646b6e",
+      "path": ".minecraft/libraries/httpcore-4.3.2.jar"
+    },
+    {
+      "sha1": "a0ae4f51da409fa0c20fa0ca59e6bbc9413ae71d",
+      "path": ".minecraft/libraries/vecmath-1.3.1.jar"
+    },
+    {
+      "sha1": "42ccaf4761f0dfdfa805c9e340d99a755907e2dd",
+      "path": ".minecraft/libraries/trove4j-3.0.3.jar"
+    },
+    {
+      "sha1": "63d216a9311cca6be337c1e458e587f99d382b84",
+      "path": ".minecraft/libraries/icu4j-core-mojang-51.2.jar"
+    },
+    {
+      "sha1": "6065cc95c661255349c1d0756657be17c29a4fd3",
+      "path": ".minecraft/libraries/jopt-simple-4.5.jar"
+    },
+    {
+      "sha1": "c73b5636faf089d9f00e8732a829577de25237ee",
+      "path": ".minecraft/libraries/codecjorbis-20101023.jar"
+    },
+    {
+      "sha1": "12f031cfe88fef5c1dd36c563c0a3a69bd7261da",
+      "path": ".minecraft/libraries/codecwav-20101023.jar"
+    },
+    {
+      "sha1": "5c5e304366f75f9eaa2e8cca546a1fb6109348b3",
+      "path": ".minecraft/libraries/libraryjavasound-20101123.jar"
+    },
+    {
+      "sha1": "73e80d0794c39665aec3f62eee88ca91676674ef",
+      "path": ".minecraft/libraries/librarylwjglopenal-20100824.jar"
+    },
+    {
+      "sha1": "419c05fe9be71f792b2d76cfc9b67f1ed0fec7f6",
+      "path": ".minecraft/libraries/soundsystem-20120107.jar"
+    },
+    {
+      "sha1": "9e50bd52ffe257a0e2cd8d971688d6ce7d174325",
+      "path": ".minecraft/libraries/netty-all-4.0.10.Final.jar"
+    },
+    {
+      "sha1": "ed727a8d9f247e2050281cb083f1c77b09dcb5cd",
+      "path": ".minecraft/libraries/guava-15.0.jar"
+    },
+    {
+      "sha1": "905075e6c80f206bbe6cf1e809d2caa69f420c76",
+      "path": ".minecraft/libraries/commons-lang3-3.1.jar"
+    },
+    {
+      "sha1": "b1b6ea3b7e4aa4f492509a4952029cd8e48019ad",
+      "path": ".minecraft/libraries/commons-io-2.4.jar"
+    },
+    {
+      "sha1": "9ce04e34240f674bc72680f8b843b1457383161a",
+      "path": ".minecraft/libraries/commons-codec-1.9.jar"
+    },
+    {
+      "sha1": "39c7796b469a600f72380316f6b1f11db6c2c7c4",
+      "path": ".minecraft/libraries/jinput-2.0.5.jar"
+    },
+    {
+      "sha1": "e12fe1fda814bd348c1579329c86943d2cd3c6a6",
+      "path": ".minecraft/libraries/jutils-1.0.0.jar"
+    },
+    {
+      "sha1": "a60a5e993c98c864010053cb901b7eab25306568",
+      "path": ".minecraft/libraries/gson-2.2.4.jar"
+    },
+    {
+      "sha1": "aefba0d5b53fbcb70860bc8046ab95d5854c07a5",
+      "path": ".minecraft/libraries/authlib-1.5.21.jar"
+    },
+    {
+      "sha1": "1dd66e68cccd907880229f9e2de1314bd13ff785",
+      "path": ".minecraft/libraries/log4j-api-2.0-beta9.jar"
+    },
+    {
+      "sha1": "678861ba1b2e1fccb594bb0ca03114bb05da9695",
+      "path": ".minecraft/libraries/log4j-core-2.0-beta9.jar"
+    },
+    {
+      "sha1": "f58c5aabcef0e41718a564be9f8e412fff8db847",
+      "path": ".minecraft/libraries/lwjgl-2.9.1.jar"
+    },
+    {
+      "sha1": "290d7ba8a1bd9566f5ddf16ad06f09af5ec9b20e",
+      "path": ".minecraft/libraries/lwjgl_util-2.9.1.jar"
+    },
+    {
+      "sha1": "1f55f009c61637c10c0acfb8b5ffc600f30044b4",
+      "path": ".minecraft/libraries/twitch-5.16.jar"
+    }
+  ],
+  "jsonIndex": [
+    {
+      "sha1": "f90ca2878ba3141d32d949ea7f665855dd073c65",
+      "path": "mods/mods.json"
+    },
+    {
+      "sha1": "f90ca2878ba3141d32d949ea7f665855dd073c65",
+      "path": "customnpcs/npcs.json"
+    },
+    {
+      "sha1": "f90ca2878ba3141d32d949ea7f665855dd073c65",
+      "path": "resourcepacks/packs.json"
+    },
+    {
+      "sha1": "f90ca2878ba3141d32d949ea7f665855dd073c65",
+      "path": "assets/indexes/1.7.10.json"
+    },
+    {
+      "sha1": "f90ca2878ba3141d32d949ea7f665855dd073c65",
+      "path": "config/config.json"
+    },
+    {
+      "sha1": "f90ca2878ba3141d32d949ea7f665855dd073c65",
+      "path": "client/client.jar"
+    }
+  ]
+}

@@ -8,8 +8,7 @@ package org.soraworld.soraclient.download;
 
 import com.github.axet.wget.WGet;
 import com.github.axet.wget.info.DownloadInfo;
-import com.github.axet.wget.info.URLInfo;
-import com.github.axet.wget.info.ex.DownloadInterruptedError;
+import javafx.concurrent.Task;
 import org.soraworld.soraclient.minecraft.gson.Index;
 
 import java.io.File;
@@ -19,70 +18,57 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 import static org.soraworld.soraclient.system.CONFIG.DLHEAD;
 
-public class DownloadTask implements Runnable {
+public class DownloadTask extends Task<Void> {
 
     private File target;
-    private float progress;
     private DownloadInfo info;
     private long PID;
+    private double progress = 0;
 
     public DownloadTask(String source, String path) {
         target = new File(path);
-        progress = 0;
         try {
             info = new DownloadInfo(new URL(source));
-            info.extract();
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
+        info.extract();
     }
 
     public DownloadTask(String source, File file) {
         target = file;
-        progress = 0;
         try {
             info = new DownloadInfo(new URL(source));
-            info.extract();
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
+        info.extract();
     }
 
     public DownloadTask(Index library) {
+        System.out.println("+++++++ new task +++++++");
         target = new File("./" + library.path);
-        progress = 0;
         try {
             info = new DownloadInfo(new URL(DLHEAD + library.path));
-            info.extract();
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
+        info.extract();
     }
 
-    public float getProgress() {
+    @Override
+    protected Void call() throws Exception {
+        target.delete();
+        WGet wGet = new WGet(info, target);
+        wGet.download(new AtomicBoolean(false), () -> {
+            progress = info.getCount() / (double) info.getLength();
+            updateProgress(info.getCount(), info.getLength());
+        });
+        return null;
+    }
+
+    public double getProgressVal() {
         return progress;
-    }
-
-    public URLInfo.States getState() {
-        return info.getState();
-    }
-
-    public void run() {
-        try {
-            if (target.exists()) {
-                if (!target.delete()) {
-                    throw new DownloadInterruptedError();
-                }
-            }
-            WGet wGet = new WGet(info, target);
-            wGet.download(new AtomicBoolean(false), () -> {
-                progress = info.getCount() / (float) info.getLength();
-            });
-        } catch (DownloadInterruptedError e) {
-            System.out.println("下载被中断");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
     }
 
     public long getPID() {

@@ -20,8 +20,13 @@ public class Index {
     @SerializedName("path")
     public String path;
 
-    public boolean needUpdate() throws IOException {
-        File file = new File(path);
-        return !(file.exists() && Objects.equals(sha1, DigestUtils.sha1Hex(FileUtils.readFileToByteArray(file))));
+    public boolean needUpdate() {
+        try {
+            System.out.println("########update###########");
+            File file = new File(path);
+            return !(file.exists() && Objects.equals(sha1, DigestUtils.sha1Hex(FileUtils.readFileToByteArray(file))));
+        } catch (IOException e) {
+            return true;
+        }
     }
 }

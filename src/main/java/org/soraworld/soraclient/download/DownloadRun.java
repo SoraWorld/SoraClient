@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Created by Himmelt on 2016/9/21.
+ * Created by Himmelt on 2016/9/25.
  * Copyright (c) 2015-2016. Himmelt All rights reserved.
  * https://opensource.org/licenses/MIT
  ******************************************************************************/
@@ -17,18 +17,15 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 import static org.soraworld.soraclient.system.CONFIG.DLHEAD;
 
-public class DownloadTask implements Runnable {
-
+public class DownloadRun implements Runnable {
     private File target;
     private DownloadInfo info;
     private long PID;
     private double progress = 0;
     private long last = 0;
 
-    public DownloadTask(String source, String path) {
+    public DownloadRun(String source, String path) {
         target = new File(path);
-        target.delete();
-        target.getParentFile().mkdirs();
         try {
             info = new DownloadInfo(new URL(source));
         } catch (MalformedURLException e) {
@@ -37,10 +34,8 @@ public class DownloadTask implements Runnable {
         info.extract();
     }
 
-    public DownloadTask(String source, File file) {
+    public DownloadRun(String source, File file) {
         target = file;
-        target.delete();
-        target.getParentFile().mkdirs();
         try {
             info = new DownloadInfo(new URL(source));
         } catch (MalformedURLException e) {
@@ -49,42 +44,29 @@ public class DownloadTask implements Runnable {
         info.extract();
     }
 
-    public DownloadTask(Index library) {
-        ///////////////////////////////////////////
-        target = new File(library.path);
-        target.delete();
-        target.getParentFile().mkdirs();
+    public DownloadRun(Index library) {
+        target = new File("./" + library.path);
         try {
             info = new DownloadInfo(new URL(DLHEAD + library.path));
+            System.out.println(info.getSource());
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
         info.extract();
+        System.out.println(info.getState());
     }
 
     @Override
     public void run() {
+        target.delete();
         WGet wGet = new WGet(info, target);
         wGet.download(new AtomicBoolean(false), () -> {
-            progress = info.getCount() / (double) info.getLength();
+            System.out.println("downloading:" + info.getState());
+            long now = System.currentTimeMillis();
+            if (now - last > 1000) {
+                progress = info.getCount() / (double) info.getLength();
+                last = now;
+            }
         });
     }
-
-    public double getProgress() {
-        return progress;
-    }
-
-    public String getPath() {
-        return target.getAbsolutePath();
-    }
-
-    public long getPID() {
-        return PID;
-    }
-
-    void setPID(long _pid) {
-        PID = _pid;
-    }
-
-
 }

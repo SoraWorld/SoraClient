@@ -20,9 +20,17 @@ public class Index {
     @SerializedName("path")
     public String path;
 
+    public Index() {
+
+    }
+
+    public Index(String _sha1, String _path) {
+        sha1 = _sha1;
+        path = _path;
+    }
+
     public boolean needUpdate() {
         try {
-            System.out.println("########update###########");
             File file = new File(path);
             return !(file.exists() && Objects.equals(sha1, DigestUtils.sha1Hex(FileUtils.readFileToByteArray(file))));
         } catch (IOException e) {

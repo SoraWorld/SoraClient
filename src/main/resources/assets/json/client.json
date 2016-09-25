@@ -280,28 +280,28 @@
   ],
   "jsonIndex": [
     {
-      "sha1": "f90ca2878ba3141d32d949ea7f665855dd073c65",
-      "path": "mods/mods.json"
+      "sha1": "61debd7150cb7b98e066c451a19d5a73e7781dbb",
+      "path": ".minecraft/client/client.jar"
     },
     {
-      "sha1": "f90ca2878ba3141d32d949ea7f665855dd073c65",
-      "path": "customnpcs/npcs.json"
+      "sha1": "2b98aed2effeaaba7939d9fd5f8ee81256a5b456",
+      "path": ".minecraft/assets/indexes/1.7.10.json"
     },
     {
-      "sha1": "f90ca2878ba3141d32d949ea7f665855dd073c65",
-      "path": "resourcepacks/packs.json"
+      "sha1": "6f51df208311aebd591fbca7dcb3f641c979720f",
+      "path": ".minecraft/mods/mods.json"
     },
     {
-      "sha1": "f90ca2878ba3141d32d949ea7f665855dd073c65",
-      "path": "assets/indexes/1.7.10.json"
+      "sha1": "639d361f4dd860ed16451edfa551471399b4130a",
+      "path": ".minecraft/customnpcs/npcs.json"
     },
     {
-      "sha1": "f90ca2878ba3141d32d949ea7f665855dd073c65",
-      "path": "config/config.json"
+      "sha1": "e3db9322599d3b9fdff8fffa8d34f5b369e0b101",
+      "path": ".minecraft/resourcepacks/packs.json"
     },
     {
-      "sha1": "f90ca2878ba3141d32d949ea7f665855dd073c65",
-      "path": "client/client.jar"
+      "sha1": "6d23fc8cd8b9b348be9caebe08e481aff3c94857",
+      "path": ".minecraft/config/configs.json"
     }
   ]
 }

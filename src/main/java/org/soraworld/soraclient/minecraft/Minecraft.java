@@ -7,8 +7,6 @@
 package org.soraworld.soraclient.minecraft;
 
 import com.google.gson.annotations.SerializedName;
-import org.soraworld.soraclient.download.DownloadService;
-import org.soraworld.soraclient.download.DownloadTask;
 import org.soraworld.soraclient.minecraft.gson.Index;
 import org.soraworld.soraclient.minecraft.gson.OSIndex;
 
@@ -26,24 +24,25 @@ public class Minecraft {
     public String version;
     @SerializedName("mainClass")
     public String mainClass;
+    @SerializedName("libraries")
+    public List<Index> libraries;
     @SerializedName("jsonIndex")
     public List<Index> jsonIndex;
     @SerializedName("natives")
     public List<OSIndex> natives;
-    @SerializedName("libraries")
-    public List<OSIndex> libraries;
 
-    private List<String> launchCmd = new ArrayList<>();
-
-    public List<String> getLaunchCmd(String username, String uuid, String xmx, DownloadService service) {
+    public List<String> getLaunchCmd(String username, String uuid, String xmx, List<Index> indices) {
+        List<String> launchCmd = new ArrayList<>();
         System.out.println("*****command******");
         launchCmd.add("javaw");
         launchCmd.add("-Xmn128m");
         launchCmd.add("-Xmx" + xmx + "m");
+        launchCmd.add("-Dfml.ignoreInvalidMinecraftCertificates=true");
+        launchCmd.add("-Dfml.ignorePatchDiscrepancies=true");
         launchCmd.add("-Djava.library.path=.minecraft/natives");
         launchCmd.add("-cp");
         System.out.println("*****getclasspath******");
-        launchCmd.add(getClasspath(service) + ".minecraft/client/client.jar");
+        launchCmd.add(getClasspath(indices) + ".minecraft/client/client.jar");
         launchCmd.add(mainClass);
         launchCmd.add("--uuid");
         launchCmd.add(uuid);
@@ -61,35 +60,44 @@ public class Minecraft {
         launchCmd.add(".minecraft/assets");
         launchCmd.add("--userType");
         launchCmd.add("Legacy");
+        launchCmd.add("--userProperties");
+        launchCmd.add("{}");
         launchCmd.add("--assetIndex");
         launchCmd.add(assets);
         launchCmd.add("--accessToken");
         launchCmd.add(uuid);
         launchCmd.add("--versionType");
         launchCmd.add("\"" + version + "\"");
+        launchCmd.add("--tweakClass");
+        launchCmd.add("cpw.mods.fml.common.launcher.FMLTweaker");
         launchCmd.add("--server");
         launchCmd.add(server);
         return launchCmd;
     }
 
-    public void fetchJson(DownloadService service) {
-        jsonIndex.stream().filter(Index::needUpdate).forEach(json -> service.addTask(new DownloadTask(json)));
+    public void fetchJson(List<Index> indices) {
+        for (Index json : jsonIndex) {
+            if (json.needUpdate())
+                indices.add(json);
+        }
     }
 
-    public void fetchNative(DownloadService service) {
-        natives.stream().filter(library -> library.os.contains(SYSTEM) && library.needUpdate()).forEach(library -> service.addTask(new DownloadTask(library)));
-    }
-
-    private String getClasspath(DownloadService service) {
-        System.out.println(service.getProgress() + SYSTEM);
-        StringBuilder classpath = new StringBuilder();
-        libraries.stream().filter(library -> library.os.contains(SYSTEM)).forEach(library -> {
-            System.out.println("need update?" + library.needUpdate());
-            if (library.needUpdate()) {
-                service.addTask(new DownloadTask(library));
+    public void fetchNative(List<Index> indices) {
+        for (OSIndex index : natives) {
+            if (index.os.contains(SYSTEM) && index.needUpdate()) {
+                indices.add(index);
             }
+        }
+    }
+
+    private String getClasspath(List<Index> indices) {
+        StringBuilder classpath = new StringBuilder();
+        for (Index library : libraries) {
+            if (library.needUpdate())
+                indices.add(library);
             classpath.append(library.path).append(";");
-        });
+        }
         return classpath.toString();
     }
+
 }

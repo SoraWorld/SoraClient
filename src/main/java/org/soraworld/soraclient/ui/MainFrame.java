@@ -15,13 +15,16 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import org.apache.commons.io.FileUtils;
 import org.soraworld.soraclient.download.DownloadService;
-import org.soraworld.soraclient.download.DownloadTask;
 import org.soraworld.soraclient.exception.NoJsonNet;
 import org.soraworld.soraclient.minecraft.Assets;
 import org.soraworld.soraclient.minecraft.Minecraft;
+import org.soraworld.soraclient.minecraft.Mods;
 import org.soraworld.soraclient.minecraft.gson.Index;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.charset.Charset;
@@ -46,6 +49,7 @@ public class MainFrame {
 
     private DownloadService service = new DownloadService();
     private Gson GSON = new Gson();
+
     public void CloseClicked() {
         service.shutdownNow();
         mainStage.close();
@@ -89,11 +93,37 @@ public class MainFrame {
                         Minecraft minecraft = GSON.fromJson(FileUtils.readFileToString(json, Charset.defaultCharset()), Minecraft.class);
                         DownloadService jsonService = new DownloadService();
                         minecraft.fetchJson(indices);
+                        if (indices.size() > 0 && !hasNetwork())
+                            throw new NoJsonNet();
                         indices.forEach(jsonService::addIndex);
                         jsonService.shutdown();
                         while (!jsonService.isTerminated()) {
                             Thread.sleep(50);
                             updateProgress(jsonService.getProgress(), 1);
+                        }
+                        updateTitle("正在更新库文件...");
+                        indices.clear();
+                        DownloadService libraryService = new DownloadService();
+                        List<String> command = minecraft.getLaunchCmd(userbox.getText(), "14233482b8dbad97617757a5c31d5872", "2048", indices);
+                        if (indices.size() > 0 && !hasNetwork())
+                            throw new NoJsonNet();
+                        indices.forEach(libraryService::addIndex);
+                        libraryService.shutdown();
+                        while (!libraryService.isTerminated()) {
+                            Thread.sleep(50);
+                            updateProgress(libraryService.getProgress(), 1);
+                        }
+                        updateTitle("正在更新本地库文件...");
+                        indices.clear();
+                        DownloadService nativeService = new DownloadService();
+                        minecraft.fetchNative(indices);
+                        if (indices.size() > 0 && !hasNetwork())
+                            throw new NoJsonNet();
+                        indices.forEach(nativeService::addIndex);
+                        nativeService.shutdown();
+                        while (!nativeService.isTerminated()) {
+                            Thread.sleep(50);
+                            updateProgress(nativeService.getProgress(), 1);
                         }
                         updateTitle("正在更新资源文件...");
                         indices.clear();
@@ -111,26 +141,22 @@ public class MainFrame {
                             Thread.sleep(50);
                             updateProgress(assetService.getProgress(), 1);
                         }
-                        updateTitle("正在更新库文件...");
+
+                        updateTitle("正在更新模组文件...");
                         indices.clear();
-                        DownloadService libraryService = new DownloadService();
-                        List<String> command = minecraft.getLaunchCmd(userbox.getText(), "14233482b8dbad97617757a5c31d5872", "2048", indices);
-                        indices.forEach(libraryService::addIndex);
-                        libraryService.shutdown();
-                        while (!libraryService.isTerminated()) {
+                        File modJson = new File(".minecraft/mods/mods.json");
+                        Mods mods = GSON.fromJson(FileUtils.readFileToString(modJson, Charset.defaultCharset()), Mods.class);
+                        DownloadService modService = new DownloadService();
+                        mods.download(indices);
+                        if (indices.size() > 0 && !hasNetwork())
+                            throw new NoJsonNet();
+                        indices.forEach(modService::addIndex);
+                        modService.shutdown();
+                        while (!modService.isTerminated()) {
                             Thread.sleep(50);
-                            updateProgress(libraryService.getProgress(), 1);
+                            updateProgress(modService.getProgress(), 1);
                         }
-                        updateTitle("正在更新本地库文件...");
-                        indices.clear();
-                        DownloadService nativeService = new DownloadService();
-                        minecraft.fetchNative(indices);
-                        indices.forEach(nativeService::addIndex);
-                        nativeService.shutdown();
-                        while (!nativeService.isTerminated()) {
-                            Thread.sleep(50);
-                            updateProgress(nativeService.getProgress(), 1);
-                        }
+
                         updateTitle("正在解压本地库文件...");
                         ExecutorService unzipService = Executors.newCachedThreadPool();
                         File nativeDir = new File(".minecraft/libraries/natives");
@@ -146,11 +172,20 @@ public class MainFrame {
                             Thread.sleep(50);
                         }
                         updateTitle("正在启动游戏本体...");
-                        ProcessBuilder process = new ProcessBuilder(command);
-                        process.start();
+                        updateProgress(1, 1);
+                        ProcessBuilder processBuilder = new ProcessBuilder(command);
+                        processBuilder.redirectErrorStream(true);
+                        Process process = processBuilder.start();
+                        BufferedReader stdout = new BufferedReader(new InputStreamReader(process.getInputStream()));
+                        updateTitle("游戏已经启动,祝您游戏愉快*_^");
+                        while ((stdout.readLine()) != null) {
+                        }
+                        stdout.close();
                         System.out.println("Task Finished!");
                     }
-                } catch (NoJsonNet | MalformedURLException e) {
+                } catch (NoJsonNet e) {
+                    Platform.runLater(e::dispose);
+                } catch (MalformedURLException e) {
                     e.printStackTrace();
                 }
                 return null;
@@ -178,20 +213,12 @@ public class MainFrame {
     }
 
     public void TrayClicked(MouseEvent mouseEvent) {
-        File file = new File("./test/fuck/you/fuck.txt");
-        file.getParentFile().mkdirs();
-        Task task = new Task() {
-            @Override
-            protected Object call() throws Exception {
-                DownloadService service = new DownloadService();
-                ExecutorService sss = Executors.newCachedThreadPool();
-                service.addTask(new DownloadTask("https://dn-stc.qbox.me/.minecraft/libraries/forge-1.7.10-10.13.4.1614-1.7.10.jar",
-                        "C:\\Users\\Himmelt\\Desktop\\SoraClient\\.minecraft\\libraries\\forge-1.7.10-10.13.4.1614-1.7.10.jar"));
-                System.out.println("task executed !");
-                service.shutdown();
-                return null;
-            }
-        };
-        new Thread(task).start();
+        List<String> command = new ArrayList<>();
+        command.add("HMCL.exe");//
+        try {
+            new ProcessBuilder(command).start();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

@@ -34,11 +34,11 @@ public class Minecraft {
     public List<String> getLaunchCmd(String username, String uuid, String xmx, List<Index> indices) {
         List<String> launchCmd = new ArrayList<>();
         System.out.println("*****command******");
-        launchCmd.add("javaw");
+        launchCmd.add("javaw.exe");
         launchCmd.add("-Xmn128m");
         launchCmd.add("-Xmx" + xmx + "m");
         launchCmd.add("-Dfml.ignoreInvalidMinecraftCertificates=true");
-        launchCmd.add("-Dfml.ignorePatchDiscrepancies=true");
+        launchCmd.add("-Dfml.ignorePatchDiscrepancies=true");//-Dfml.ignoreInvalidMinecraftCertificates=true -Dfml.ignorePatchDiscrepancies=true
         launchCmd.add("-Djava.library.path=.minecraft/natives");
         launchCmd.add("-cp");
         System.out.println("*****getclasspath******");

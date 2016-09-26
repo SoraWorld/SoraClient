@@ -7,6 +7,7 @@
 package org.soraworld.soraclient.minecraft;
 
 import com.google.gson.annotations.SerializedName;
+import org.soraworld.soraclient.minecraft.gson.Index;
 import org.soraworld.soraclient.minecraft.gson.ModIndex;
 
 import java.util.List;
@@ -14,4 +15,12 @@ import java.util.List;
 public class Mods {
     @SerializedName("mods")
     public List<ModIndex> mods;
+
+    public void download(List<Index> indices) {
+        for (ModIndex mod : mods) {
+            if (mod.needUpdate()) {
+                indices.add(mod);
+            }
+        }
+    }
 }

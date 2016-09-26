@@ -12,7 +12,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 
 import java.io.IOException;
 import java.util.Locale;
@@ -28,7 +27,7 @@ public class DialogStage extends Stage {
             Button button = (Button) root.lookup("#close");
             button.setOnAction(e -> close());
             setScene(new Scene(root, 400, 300));
-            initStyle(StageStyle.UNDECORATED);
+            //initStyle(StageStyle.UNDECORATED);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -43,7 +42,7 @@ public class DialogStage extends Stage {
             Button button = (Button) root.lookup("#close");
             button.setOnAction(e -> close());
             setScene(new Scene(root, 400, 300));
-            initStyle(StageStyle.UNDECORATED);
+            //initStyle(StageStyle.UNDECORATED);
         } catch (IOException e) {
             e.printStackTrace();
         }

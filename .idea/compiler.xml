@@ -20,6 +20,7 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="SoraClient_main" target="1.8" />
+      <module name="SoraClient_package" target="1.8" />
       <module name="SoraClient_test" target="1.8" />
     </bytecodeTargetLevel>
   </component>

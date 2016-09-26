@@ -90,10 +90,6 @@
       "path": ".minecraft/libraries/forge-1.7.10-10.13.4.1614-1.7.10.jar"
     },
     {
-      "sha1": "01dcf0cc6cc1619cd19fac168aa67a70b8aefec4",
-      "path": ".minecraft/libraries/OptiFine-1.7.10_HD_U_D6.jar"
-    },
-    {
       "sha1": "111e7bea9c968cdb3d06ef4632bf7ff0824d0f36",
       "path": ".minecraft/libraries/launchwrapper-1.12.jar"
     },
@@ -288,7 +284,7 @@
       "path": ".minecraft/assets/indexes/1.7.10.json"
     },
     {
-      "sha1": "6f51df208311aebd591fbca7dcb3f641c979720f",
+      "sha1": "d0034ea5dcab8ab20314f13a3a4083ef1da95c79",
       "path": ".minecraft/mods/mods.json"
     },
     {

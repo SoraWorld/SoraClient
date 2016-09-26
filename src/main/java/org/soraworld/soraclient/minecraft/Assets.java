@@ -16,11 +16,11 @@ public class Assets {
     @SerializedName("objects")
     public Map<String, AssetsObject> objects;
 
-    public void download(List<Index> indexes) {
+    public void download(List<Index> indices) {
         for (AssetsObject object : objects.values()) {
             Index index = new Index(object.hash, ".minecraft/assets/objects/" + object.hash.substring(0, 2) + "/" + object.hash);
             if (index.needUpdate()) {
-                indexes.add(index);
+                indices.add(index);
             }
         }
     }

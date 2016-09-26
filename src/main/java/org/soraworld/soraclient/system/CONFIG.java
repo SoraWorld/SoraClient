@@ -8,13 +8,9 @@ package org.soraworld.soraclient.system;
 
 public class CONFIG {
     public static String DLHEAD = "https://dn-stc.qbox.me/";//https://dn-stc.qbox.me/.minecraft/client/client.json
-    public static String SYSTEM = "win64";
+    public static String SYSTEM = getOS();
 
-    public CONFIG() {
-        SYSTEM = getOS();
-    }
-
-    private String getOS() {
+    private static String getOS() {
         String name = System.getProperty("os.name").toLowerCase();
         String arch = System.getProperty("os.arch").toLowerCase();
         if (name.contains("win"))

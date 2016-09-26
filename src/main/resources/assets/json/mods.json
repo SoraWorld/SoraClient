@@ -1,10 +1,103 @@
 {
   "mods": [
     {
-      "name": "mod",
-      "sha1": "12345",
-      "path": "mods/mod.jar",
-      "core": []
+      "name": "防止作弊",
+      "md5": "44f6bc86a41fa0555784c255e3174260",
+      "sha1": "adf157e9854faabea6f5e739a65be279fb925b22",
+      "path": ".minecraft/mods/AntiCheat-3.4.3-1.7.10.jar",
+      "core": [
+        "core"
+      ]
+    },
+    {
+      "name": "依赖核心",
+      "md5": "e77344bda12bd0b91e01dfbb00a653f0",
+      "sha1": "b591d7b526794c0b9d22d10e0a0b46636c10fce3",
+      "path": ".minecraft/mods/bspkrsCore-6.16.jar",
+      "core": [
+        "core"
+      ]
+    },
+    {
+      "name": "自定任务",
+      "md5": "0a8342a84e85d4a4abb9393c163658e7",
+      "sha1": "99b949ca6612a51a3e73630e6ea8d466e3ac7102",
+      "path": ".minecraft/mods/CustomNpcs-1.7.10-S.jar",
+      "core": [
+        "core"
+      ]
+    },
+    {
+      "name": "性能优化",
+      "md5": "1253dfe58b85393a04b005d28ba83369",
+      "sha1": "a4a7fd7593aff312567ea3cfd6232783a4d875f4",
+      "path": ".minecraft/mods/FastCraft-1.23.jar",
+      "core": [
+        "core"
+      ]
+    },
+    {
+      "name": "中文修复",
+      "md5": "e1f9777c60cf07347094345bba247356",
+      "sha1": "9764a884065df77e79485aee58a7f27dcd1602b4",
+      "path": ".minecraft/mods/InputFix-1.7.10-v5.jar",
+      "core": [
+        "core"
+      ]
+    },
+    {
+      "name": "一键整理",
+      "md5": "83f7ddcd5f5fd8d640aa15dc62acc6bf",
+      "sha1": "3643e09b93e66c5690de7b9c3daa62da7789e7f5",
+      "path": ".minecraft/mods/InventoryTweaks-1.59.jar",
+      "core": [
+        "core"
+      ]
+    },
+    {
+      "name": "旅行地图",
+      "md5": "9091571243da9b1532ba2d8fef3f2eea",
+      "sha1": "c1b1fd82c11f81a196ca6e599bd1fe78fd2fe01a",
+      "path": ".minecraft/mods/JourneyMap-1.7.10-5.1.4.jar",
+      "core": [
+        "core"
+      ]
+    },
+    {
+      "name": "快捷菜单",
+      "md5": "d18b9a019f07784c7dba20ca7d0903f2",
+      "sha1": "d4c0e077aacd4fed83f346ae28d0d320b1f6978e",
+      "path": ".minecraft/mods/MineMenu-1.7.10-1.2.0.jar",
+      "core": [
+        "core"
+      ]
+    },
+    {
+      "name": "高清修复",
+      "md5": "e668b684748a85eeb1bfcf6e38a4c9e2",
+      "sha1": "01dcf0cc6cc1619cd19fac168aa67a70b8aefec4",
+      "path": ".minecraft/mods/OptiFine-1.7.10_HD_U_D6-S.jar",
+      "core": [
+        "free"
+      ]
+    },
+    {
+      "name": "一键砍树",
+      "md5": "c9a8f77274a63745d2d0e1f026dffdbc",
+      "sha1": "87f540bb1e3b502924044c6482e04c2b8cb8a049",
+      "path": ".minecraft/mods/Treecapitator-2.0.4.jar",
+      "core": [
+        "core"
+      ]
+    },
+    {
+      "name": "皮肤模组",
+      "md5": "32481255a21e61c00182a4bcc090641d",
+      "sha1": "ee237cbeb239d6b8355e795d06bf68c1e8d53326",
+      "path": ".minecraft/mods/UniSkinMod-1.7.10.jar",
+      "core": [
+        "core"
+      ]
     }
   ]
 }

@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/SoraClient.iml" filepath="$PROJECT_DIR$/.idea/modules/SoraClient.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/SoraClient_main.iml" filepath="$PROJECT_DIR$/.idea/modules/SoraClient_main.iml" group="SoraClient" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/SoraClient_test.iml" filepath="$PROJECT_DIR$/.idea/modules/SoraClient_test.iml" group="SoraClient" />
+      <module fileurl="file://$PROJECT_DIR$/SoraClient.iml" filepath="$PROJECT_DIR$/SoraClient.iml" />
     </modules>
   </component>
 </project>

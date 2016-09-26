@@ -34,7 +34,7 @@ public class Minecraft {
     public List<String> getLaunchCmd(String username, String uuid, String xmx, List<Index> indices) {
         List<String> launchCmd = new ArrayList<>();
         System.out.println("*****command******");
-        launchCmd.add("javaw.exe");
+        launchCmd.add("javaw");
         launchCmd.add("-Xmn128m");
         launchCmd.add("-Xmx" + xmx + "m");
         launchCmd.add("-Dfml.ignoreInvalidMinecraftCertificates=true");
@@ -42,7 +42,7 @@ public class Minecraft {
         launchCmd.add("-Djava.library.path=.minecraft/natives");
         launchCmd.add("-cp");
         System.out.println("*****getclasspath******");
-        launchCmd.add(getClasspath(indices) + ".minecraft/client/client.jar");
+        launchCmd.add(getClasspath(indices) + ".minecraft/versions/client/client.jar");
         launchCmd.add(mainClass);
         launchCmd.add("--uuid");
         launchCmd.add(uuid);

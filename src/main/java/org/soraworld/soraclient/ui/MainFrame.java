@@ -76,17 +76,25 @@ public class MainFrame {
             protected Object call() throws Exception {
                 updateTitle("正在检查启动参数....");
                 try {
-                    File json = new File(".minecraft/client/client.json");
+                    System.out.println("start checking json");
+                    File json = new File(".minecraft/versions/client/client.json");
                     if (hasNetwork()) {
+                        System.out.println("has network");
                         json.delete();
-                        WGet wGet = new WGet(new URL(DLHEAD + ".minecraft/client/client.json"), json);
+                        System.out.println("downloaded");
+                        WGet wGet = new WGet(new URL(DLHEAD + ".minecraft/versions/client/client.json"), json);
+                        System.out.println("downloaded");
                         wGet.download();
+                        System.out.println("downloaded");
                     } else {
+                        System.out.println("no nectwork");
                         if (!json.exists()) {
                             throw new NoJsonNet();
                         }
                     }
+                    System.out.println("start checking username");
                     if (isValidId()) {
+                        System.out.println("valid start fetch");
                         List<Index> indices = new ArrayList<>();
                         updateTitle("正在获取版本信息...");
                         indices.clear();

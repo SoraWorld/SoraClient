@@ -1,4 +1,5 @@
 {
+  "id":"client",
   "assets": "1.7.10",
   "server": "mc.soraworld.org",
   "version": "SoraClient-2.0",
@@ -277,14 +278,14 @@
   "jsonIndex": [
     {
       "sha1": "61debd7150cb7b98e066c451a19d5a73e7781dbb",
-      "path": ".minecraft/client/client.jar"
+      "path": ".minecraft/versions/client/client.jar"
     },
     {
       "sha1": "2b98aed2effeaaba7939d9fd5f8ee81256a5b456",
       "path": ".minecraft/assets/indexes/1.7.10.json"
     },
     {
-      "sha1": "d0034ea5dcab8ab20314f13a3a4083ef1da95c79",
+      "sha1": "e313abb382acdddd1d2c8d2b061e5301dfbaba0e",
       "path": ".minecraft/mods/mods.json"
     },
     {

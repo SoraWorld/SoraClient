@@ -9,15 +9,14 @@ package org.soraworld.soraclient.download;
 import com.github.axet.wget.WGet;
 import com.github.axet.wget.info.DownloadInfo;
 import org.soraworld.soraclient.minecraft.gson.Index;
+import org.soraworld.soraclient.system.Reference;
 
 import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.concurrent.atomic.AtomicBoolean;
 
-import static org.soraworld.soraclient.system.CONFIG.DLHEAD;
-
-public class DownloadTask implements Runnable {
+class DownloadTask implements Runnable {
 
     private File target;
     private DownloadInfo info;
@@ -49,13 +48,13 @@ public class DownloadTask implements Runnable {
         info.extract();
     }
 
-    public DownloadTask(Index library) {
+    DownloadTask(Index library) {
         ///////////////////////////////////////////
         target = new File(library.path);
         target.delete();
         target.getParentFile().mkdirs();
         try {
-            info = new DownloadInfo(new URL(DLHEAD + library.path));
+            info = new DownloadInfo(new URL(Reference.ResourcesURL + library.path));
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
@@ -65,12 +64,10 @@ public class DownloadTask implements Runnable {
     @Override
     public void run() {
         WGet wGet = new WGet(info, target);
-        wGet.download(new AtomicBoolean(false), () -> {
-            progress = info.getCount() / (double) info.getLength();
-        });
+        wGet.download(new AtomicBoolean(false), () -> progress = info.getCount() / (double) info.getLength());
     }
 
-    public double getProgress() {
+    double getProgress() {
         return progress;
     }
 

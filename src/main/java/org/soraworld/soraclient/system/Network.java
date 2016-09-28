@@ -9,7 +9,7 @@ package org.soraworld.soraclient.system;
 import java.io.IOException;
 import java.net.InetAddress;
 
-public final class net {
+public final class Network {
 
     public static boolean hasNetwork() {
         try {

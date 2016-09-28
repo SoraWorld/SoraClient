@@ -13,5 +13,13 @@ import java.util.List;
 
 public class Npcs {
     @SerializedName("objects")
-    public List<Index> objects;
+    private List<Index> objects;
+
+    public void download(List<Index> indices) {
+        for (Index index : objects) {
+            if (index.needUpdate()) {
+                indices.add(index);
+            }
+        }
+    }
 }

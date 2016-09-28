@@ -1,16 +1,12 @@
 {
   "objects": [
     {
-      "sha1": "",
-      "path": "customnpcs/assets/customnpcs/sounds.json"
+      "sha1": "1006b11f77648f6abaa04c12edb82a0799158adb",
+      "path": ".minecraft/customnpcs/assets/customnpcs/sounds.json"
     },
     {
-      "sha1": "",
-      "path": "customnpcs/assets/customnpcs/sounds/To the moon.ogg"
-    },
-    {
-      "sha1": "",
-      "path": "customnpcs/assets/customnpcs/textures/default.png"
+      "sha1": "f28a20f9433a0018528d8c79533a39ac69c0f4e4",
+      "path": ".minecraft/customnpcs/assets/customnpcs/sounds/Victory.ogg"
     }
   ]
 }

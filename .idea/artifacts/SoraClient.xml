@@ -1,5 +1,5 @@
 <component name="ArtifactManager">
-  <artifact type="javafx" build-on-make="true" name="SoraClient">
+  <artifact type="javafx" name="SoraClient">
     <output-path>$PROJECT_DIR$/out/artifacts/SoraClient</output-path>
     <properties id="javafx-properties">
       <options>

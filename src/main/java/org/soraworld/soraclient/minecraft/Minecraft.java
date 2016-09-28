@@ -9,11 +9,10 @@ package org.soraworld.soraclient.minecraft;
 import com.google.gson.annotations.SerializedName;
 import org.soraworld.soraclient.minecraft.gson.Index;
 import org.soraworld.soraclient.minecraft.gson.OSIndex;
+import org.soraworld.soraclient.system.Reference;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import static org.soraworld.soraclient.system.CONFIG.SYSTEM;
 
 public class Minecraft {
     @SerializedName("assets")
@@ -21,15 +20,15 @@ public class Minecraft {
     @SerializedName("server")
     public String server;
     @SerializedName("version")
-    public String version;
+    private String version;
     @SerializedName("mainClass")
-    public String mainClass;
+    private String mainClass;
     @SerializedName("libraries")
-    public List<Index> libraries;
+    private List<Index> libraries;
     @SerializedName("jsonIndex")
-    public List<Index> jsonIndex;
+    private List<Index> jsonIndex;
     @SerializedName("natives")
-    public List<OSIndex> natives;
+    private List<OSIndex> natives;
 
     public List<String> getLaunchCmd(String username, String uuid, String xmx, List<Index> indices) {
         List<String> launchCmd = new ArrayList<>();
@@ -38,10 +37,9 @@ public class Minecraft {
         launchCmd.add("-Xmn128m");
         launchCmd.add("-Xmx" + xmx + "m");
         launchCmd.add("-Dfml.ignoreInvalidMinecraftCertificates=true");
-        launchCmd.add("-Dfml.ignorePatchDiscrepancies=true");//-Dfml.ignoreInvalidMinecraftCertificates=true -Dfml.ignorePatchDiscrepancies=true
+        launchCmd.add("-Dfml.ignorePatchDiscrepancies=true");
         launchCmd.add("-Djava.library.path=.minecraft/natives");
         launchCmd.add("-cp");
-        System.out.println("*****getclasspath******");
         launchCmd.add(getClasspath(indices) + ".minecraft/versions/client/client.jar");
         launchCmd.add(mainClass);
         launchCmd.add("--uuid");
@@ -70,8 +68,6 @@ public class Minecraft {
         launchCmd.add("\"" + version + "\"");
         launchCmd.add("--tweakClass");
         launchCmd.add("cpw.mods.fml.common.launcher.FMLTweaker");
-        launchCmd.add("--server");
-        launchCmd.add(server);
         return launchCmd;
     }
 
@@ -84,7 +80,15 @@ public class Minecraft {
 
     public void fetchNative(List<Index> indices) {
         for (OSIndex index : natives) {
-            if (index.os.contains(SYSTEM) && index.needUpdate()) {
+            if (index.os.contains(Reference.OS) && index.needUpdate()) {
+                indices.add(index);
+            }
+        }
+    }
+
+    public void fetchNpcs(List<Index> indices) {
+        for (OSIndex index : natives) {
+            if (index.os.contains(Reference.OS) && index.needUpdate()) {
                 indices.add(index);
             }
         }

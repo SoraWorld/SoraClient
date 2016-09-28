@@ -1,0 +1,69 @@
+/* Stylesheet for JavaFX Application */
+/* Font face declaration */
+@font-face {
+    font-family: 'iconfont';
+    src: url('../fonts/iconfont.ttf');
+}
+
+.icon {
+    -fx-font-family: iconfont;
+}
+
+/* font size definitions */
+
+.icon-min {
+    -fx-font-size: 15;
+}
+
+.icon-mid {
+    -fx-font-size: 18;
+}
+
+.icon-max {
+    -fx-font-size: 22;
+}
+
+/* Theme color definitions */
+.root {
+    theme-color: rgba(0, 127, 215, 0.51);
+    theme-color-dark: rgba(0, 127, 215, 0.8);
+}
+
+/* Layout definitions */
+.left-row {
+    -fx-pref-height: 35;
+}
+
+.left-menu {
+    -fx-padding: 0 0 0 16;
+}
+
+.left-menu.radio-button {
+    -fx-border-color: transparent;
+    -fx-border-width: 0 0 0 3;
+}
+
+.left-menu.radio-button:selected {
+    -fx-background-color: theme-color-dark;
+    -fx-border-color: theme-color-dark;
+}
+
+.left-menu.radio-button .radio {
+    -fx-background-color: transparent;
+}
+
+.left-menu.radio-button .radio .dot {
+    -fx-background-color: transparent;
+}
+
+#topbar {
+    -fx-background-color: theme-color;
+}
+
+#mainFrame {
+    -fx-border-color: theme-color;
+    -fx-border-width: 1;
+    -fx-background-size: stretch;
+    -fx-background-position: 0 0;
+    -fx-background-image: url("../images/background.jpg");
+}

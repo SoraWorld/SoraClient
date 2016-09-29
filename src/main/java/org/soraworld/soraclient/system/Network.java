@@ -6,16 +6,18 @@
 
 package org.soraworld.soraclient.system;
 
-import java.io.IOException;
-import java.net.InetAddress;
+import java.net.MalformedURLException;
+import java.net.URL;
+
+import static com.github.axet.wget.WGet.getHtml;
 
 public final class Network {
 
     public static boolean hasNetwork() {
         try {
-            InetAddress address = InetAddress.getByName("www.baidu.com");
-            return address.isReachable(5000);
-        } catch (IOException e) {
+            return getHtml(new URL("http://example.com")).startsWith("<!doctype html>");
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
             return false;
         }
     }

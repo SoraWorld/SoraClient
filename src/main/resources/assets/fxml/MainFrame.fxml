@@ -4,96 +4,33 @@
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.Cursor?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.paint.*?>
 <?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import java.net.URL?>
-<BorderPane xmlns:fx="http://javafx.com/fxml/1" fx:id="mainFrame" focusTraversable="true" onMouseDragged="#MouseDragged"
-            onMousePressed="#MousePressed" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.60"
-            fx:controller="org.soraworld.soraclient.ui.MainFrame">
-    <center>
-        <AnchorPane prefHeight="355.0" prefWidth="383.0" style="-fx-border-color: #E1E1E2; -fx-border-width: 0 0 0 1;"
-                    BorderPane.alignment="CENTER">
-            <AnchorPane fx:id="right_game" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
-                        AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                <VBox layoutY="190.0" spacing="5.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="20.0"
-                      AnchorPane.rightAnchor="20.0">
-                    <TextField fx:id="userbox" promptText="请输入游戏ID">
-                        <font>
-                            <Font size="15.0"/>
-                        </font>
-                    </TextField>
-                    <Label fx:id="userhint" maxWidth="1.7976931348623157E308" textFill="RED"/>
-                    <Button fx:id="btn_launch" maxWidth="1.7976931348623157E308" mnemonicParsing="false"
-                            onMouseClicked="#LaunchGame" prefHeight="50.0" text="开始游戏"/>
-                    <Label fx:id="launchLabel" maxWidth="1.7976931348623157E308" textFill="#00e081" visible="false"/>
-                    <ProgressBar fx:id="launchProgress" maxWidth="1.7976931348623157E308" progress="0.0"
-                                 visible="false"/>
-                </VBox>
-            </AnchorPane>
-            <AnchorPane fx:id="right_setting" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
-                        AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0"/>
-            <AnchorPane fx:id="right_system" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
-                        AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                <GridPane hgap="10.0" layoutX="34.0" layoutY="58.0" prefHeight="168.0" prefWidth="332.0" vgap="10.0">
-                    <columnConstraints>
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="139.0" minWidth="10.0" prefWidth="122.0"/>
-                        <ColumnConstraints hgrow="SOMETIMES"/>
-                    </columnConstraints>
-                    <rowConstraints>
-                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES"/>
-                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES"/>
-                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES"/>
-                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES"/>
-                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES"/>
-                    </rowConstraints>
-                    <Label text="虚拟机最大内存(MB)"/>
-                    <TextField fx:id="setting_mxm" prefHeight="23.0" prefWidth="90.0" text="1024"
-                               GridPane.columnIndex="1"/>
-                    <Label text="默认源(勿擅自修改)" GridPane.rowIndex="1"/>
-                    <TextField fx:id="setting_resourceUrl" text="https://dn-stc.qbox.me/soraclient/"
-                               GridPane.columnIndex="1" GridPane.rowIndex="1"/>
-                    <ColorPicker fx:id="setting_colorPicker" maxWidth="1.7976931348623157E308"
-                                 onHidden="#SwitchCustomColor" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
-                    <Label maxWidth="1.7976931348623157E308" text="主题选择" GridPane.rowIndex="2"/>
-                    <Label maxWidth="1.7976931348623157E308" text="主题颜色" GridPane.rowIndex="3"/>
-                    <ComboBox fx:id="setting_theme" maxWidth="1.7976931348623157E308" onHidden="#ThemeHidden"
-                              value="Default" GridPane.columnIndex="1" GridPane.rowIndex="2">
-                        <items>
-                            <FXCollections fx:factory="observableArrayList">
-                                <String fx:value="Default"/>
-                                <String fx:value="Emilia"/>
-                                <String fx:value="Rem"/>
-                                <String fx:value="Custom"/>
-                            </FXCollections>
-                        </items>
-                    </ComboBox>
-                    <Label maxWidth="1.7976931348623157E308" text="主题背景" GridPane.rowIndex="4"/>
-                    <Button fx:id="setting_background" mnemonicParsing="false" onMouseClicked="#ThemeBackgroundClicked"
-                            prefHeight="23.0" prefWidth="197.0" text="从本地选择一张背景图片" textOverrun="LEADING_ELLIPSIS"
-                            GridPane.columnIndex="1" GridPane.rowIndex="4"/>
-                </GridPane>
-            </AnchorPane>
-            <AnchorPane fx:id="right_about_sora" visible="false" AnchorPane.bottomAnchor="0.0"
-                        AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0"/>
-            <AnchorPane fx:id="right_about_soft" visible="false" AnchorPane.bottomAnchor="0.0"
-                        AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0"/>
-        </AnchorPane>
-    </center>
+<BorderPane xmlns:fx="http://javafx.com/fxml/1" fx:id="mainFrame" focusTraversable="true"
+            onMouseDragged="#WindowDragged" onMousePressed="#WindowPressed" prefWidth="600.0"
+            xmlns="http://javafx.com/javafx/8.0.60" fx:controller="org.soraworld.soraclient.ui.MainFrame">
     <top>
         <AnchorPane id="topbar" prefHeight="44.0" styleClass="icon" BorderPane.alignment="CENTER">
             <BorderPane.margin>
                 <Insets/>
             </BorderPane.margin>
+            <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true"
+                       AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="5.0">
+                <Image url="@../images/icon.png"/>
+            </ImageView>
             <HBox layoutX="461.0" layoutY="10.0" spacing="5.0" AnchorPane.rightAnchor="5.0">
-                <Button mnemonicParsing="false" onMouseClicked="#MiniClicked" styleClass="icon" text="%icon.mini"/>
-                <Button disable="true" mnemonicParsing="false" onMouseClicked="#TrayClicked" text="%icon.tray"/>
-                <Button mnemonicParsing="false" onMouseClicked="#CloseClicked" styleClass="icon" text="%icon.close"/>
+                <Button mnemonicParsing="false" onMouseClicked="#WindowMinimize" styleClass="icon" text="%icon.mini"/>
+                <Button disable="true" mnemonicParsing="false" text="%icon.tray"/>
+                <Button mnemonicParsing="false" onMouseClicked="#WindowClose" styleClass="icon" text="%icon.close"/>
             </HBox>
-            <Text boundsType="VISUAL" fill="#e00474" layoutX="7.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0"
-                  style="-fx-font-size: 40;" text="%icon.soraworld" AnchorPane.bottomAnchor="3.25"
-                  AnchorPane.leftAnchor="8.25" AnchorPane.topAnchor="3.25"/>
+            <Text boundsType="VISUAL" cache="true" fill="WHITE" layoutX="180.0" layoutY="32.0" styleClass="title"
+                  text="空の境界MC"/>
+            <Text fx:id="title_version" boundsType="VISUAL" cache="true" fill="WHITE" layoutX="320.0" layoutY="32.0"
+                  styleClass="title"/>
         </AnchorPane>
     </top>
     <left>
@@ -103,9 +40,9 @@
                 <cursor>
                     <Cursor fx:constant="HAND"/>
                 </cursor>
-                <AnchorPane focusTraversable="true" styleClass="left-row">
+                <AnchorPane styleClass="left-row">
                     <RadioButton fx:id="left_game" contentDisplay="CENTER" layoutX="7.0" mnemonicParsing="false"
-                                 onMouseClicked="#LeftGameClicked" selected="true" styleClass="left-menu" text="空 之 境 界"
+                                 onMouseClicked="#LeftMenuClicked" selected="true" styleClass="left-menu" text="空 之 境 界"
                                  AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
                                  AnchorPane.topAnchor="0.0">
                         <textFill>
@@ -136,7 +73,7 @@
                 </AnchorPane>
                 <AnchorPane styleClass="left-row">
                     <RadioButton fx:id="left_setting" contentDisplay="CENTER" layoutX="7.0" mnemonicParsing="false"
-                                 onMouseClicked="#LeftSettingClicked" styleClass="left-menu" text="游 戏 设 置"
+                                 onMouseClicked="#LeftMenuClicked" styleClass="left-menu" text="游 戏 设 置"
                                  toggleGroup="$leftmenu" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
                                  AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                         <textFill>
@@ -164,7 +101,7 @@
                 </AnchorPane>
                 <AnchorPane styleClass="left-row">
                     <RadioButton fx:id="left_system" contentDisplay="CENTER" layoutX="7.0" mnemonicParsing="false"
-                                 onMouseClicked="#LeftSystemClicked" styleClass="left-menu" text="系 统 设 置"
+                                 onMouseClicked="#LeftMenuClicked" styleClass="left-menu" text="系 统 设 置"
                                  toggleGroup="$leftmenu" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
                                  AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                         <textFill>
@@ -192,7 +129,7 @@
                 </AnchorPane>
                 <AnchorPane styleClass="left-row">
                     <RadioButton fx:id="left_about_sora" contentDisplay="CENTER" layoutX="7.0"
-                                 onMouseClicked="#LeftAboutSoraClicked" styleClass="left-menu" text="关 于 空 境"
+                                 onMouseClicked="#LeftMenuClicked" styleClass="left-menu" text="关 于 空 境"
                                  toggleGroup="$leftmenu" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
                                  AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                         <textFill>
@@ -220,7 +157,7 @@
                 </AnchorPane>
                 <AnchorPane styleClass="left-row">
                     <RadioButton fx:id="left_about_soft" contentDisplay="CENTER" layoutX="7.0"
-                                 onMouseClicked="#LeftAboutSoftClicked" styleClass="left-menu" text="关 于 软 件"
+                                 onMouseClicked="#LeftMenuClicked" styleClass="left-menu" text="关 于 软 件"
                                  toggleGroup="$leftmenu" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
                                  AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                         <textFill>
@@ -246,9 +183,158 @@
                         </styleClass>
                     </Label>
                 </AnchorPane>
+                <AnchorPane styleClass="left-row">
+                    <RadioButton fx:id="left_sponsor" contentDisplay="CENTER" layoutX="7.0"
+                                 onMouseClicked="#LeftMenuClicked" styleClass="left-menu" text="赞 助 打 赏"
+                                 toggleGroup="$leftmenu" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+                                 AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <textFill>
+                            <LinearGradient>
+                                <stops>
+                                    <Stop color="#bf1515"/>
+                                    <Stop color="#2356f2" offset="1.0"/>
+                                </stops>
+                            </LinearGradient>
+                        </textFill>
+                        <font>
+                            <Font size="14.0"/>
+                        </font>
+                        <opaqueInsets>
+                            <Insets/>
+                        </opaqueInsets>
+                    </RadioButton>
+                    <Label layoutX="14.0" layoutY="13.0" text="%icon.zhuanzhang" AnchorPane.bottomAnchor="0.0"
+                           AnchorPane.leftAnchor="16.0" AnchorPane.topAnchor="0.0">
+                        <styleClass>
+                            <String fx:value="icon"/>
+                            <String fx:value="icon-mid"/>
+                        </styleClass>
+                    </Label>
+                </AnchorPane>
             </VBox>
         </AnchorPane>
     </left>
+    <center>
+        <AnchorPane prefHeight="355.0" prefWidth="383.0" style="-fx-border-color: #E1E1E2; -fx-border-width: 0 0 0 1;"
+                    BorderPane.alignment="CENTER">
+            <AnchorPane fx:id="right_game" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+                        AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                <TextField fx:id="userbox" layoutX="225.0" layoutY="170.0" prefHeight="28.0" prefWidth="180.0"
+                           promptText="请输入游戏ID" AnchorPane.bottomAnchor="150.0" AnchorPane.rightAnchor="50.0">
+                    <font>
+                        <Font size="13.0"/>
+                    </font>
+                </TextField>
+                <Label fx:id="userhint" layoutX="49.0" layoutY="278.0" textFill="RED" AnchorPane.bottomAnchor="30.0"
+                       AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0"/>
+                <Button fx:id="btn_launch" layoutX="225.0" layoutY="228.0" mnemonicParsing="false"
+                        onMouseClicked="#LaunchGame" prefHeight="60.0" prefWidth="180.0" text="开始游戏"
+                        AnchorPane.bottomAnchor="60.0" AnchorPane.rightAnchor="50.0"/>
+                <Label fx:id="launchLabel" layoutX="20.0" layoutY="313.0" textFill="#00cc25" visible="false"
+                       AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0"/>
+                <ProgressBar fx:id="launchProgress" layoutX="20.0" layoutY="333.0" prefHeight="20.0" progress="0.0"
+                             visible="false" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="20.0"
+                             AnchorPane.rightAnchor="20.0"/>
+            </AnchorPane>
+            <AnchorPane fx:id="right_setting" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+                        AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                <VBox spacing="18.0" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="150.0"
+                      AnchorPane.topAnchor="100.0">
+                    <children>
+                        <Button fx:id="game_clean_all" maxWidth="1.7976931348623157E308"
+                                onMouseClicked="#GameCleanClicked" prefHeight="30.0" text="清除游戏目录(谨慎操作,删除所有游戏文件)"/>
+                        <Button fx:id="game_clean_mods" maxWidth="1.7976931348623157E308"
+                                onMouseClicked="#GameCleanClicked" prefHeight="30.0" text="清除Mods目录(出现Mod冲突时使用)"/>
+                        <Button fx:id="game_clean_version" maxWidth="1.7976931348623157E308"
+                                onMouseClicked="#GameCleanClicked" prefHeight="30.0" text="清除版本目录(反作弊踢出,且上一条没有解决时)"/>
+                        <Button fx:id="game_clean_config" maxWidth="1.7976931348623157E308"
+                                onMouseClicked="#GameCleanClicked" prefHeight="30.0" text="恢复默认设置(Mod独立设置需手动恢复)"/>
+                    </children>
+                </VBox>
+            </AnchorPane>
+            <AnchorPane fx:id="right_system" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+                        AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                <GridPane hgap="15.0" maxWidth="1.7976931348623157E308" vgap="10.0" AnchorPane.leftAnchor="100.0"
+                          AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="100.0">
+                    <columnConstraints>
+                        <ColumnConstraints maxWidth="180.0" minWidth="180.0" prefWidth="180.0"/>
+                        <ColumnConstraints maxWidth="180.0" minWidth="180.0" prefWidth="180.0"/>
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES"/>
+                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES"/>
+                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES"/>
+                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES"/>
+                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES"/>
+                    </rowConstraints>
+                    <Label maxWidth="1.7976931348623157E308" prefHeight="30.0" style="-fx-background-color: #fafafa99;"
+                           text="虚拟机最大内存(MB)" textFill="#575757">
+                        <padding>
+                            <Insets left="20.0"/>
+                        </padding>
+                    </Label>
+                    <Label maxWidth="1.7976931348623157E308" prefHeight="30.0" style="-fx-background-color: #fafafa99;"
+                           text="默认源(勿擅自修改)" textFill="#575757" GridPane.rowIndex="1">
+                        <padding>
+                            <Insets left="20.0"/>
+                        </padding>
+                    </Label>
+                    <Label maxWidth="1.7976931348623157E308" prefHeight="30.0" style="-fx-background-color: #fafafa99;"
+                           text="主题选择" textFill="#575757" GridPane.rowIndex="2">
+                        <padding>
+                            <Insets left="20.0"/>
+                        </padding>
+                    </Label>
+                    <Label maxWidth="1.7976931348623157E308" prefHeight="30.0" style="-fx-background-color: #fafafa99;"
+                           text="主题颜色" textFill="#575757" GridPane.rowIndex="3">
+                        <padding>
+                            <Insets left="20.0"/>
+                        </padding>
+                    </Label>
+                    <Label maxWidth="1.7976931348623157E308" prefHeight="30.0" style="-fx-background-color: #fafafa99;"
+                           text="主题背景" textFill="#575757" GridPane.rowIndex="4">
+                        <padding>
+                            <Insets left="20.0"/>
+                        </padding>
+                    </Label>
+                    <TextField fx:id="setting_mxm" text="1024" GridPane.columnIndex="1"/>
+                    <TextField fx:id="setting_resourceUrl" text="https://dn-stc.qbox.me/soraclient/"
+                               GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+                    <ComboBox fx:id="setting_theme" maxWidth="1.7976931348623157E308" onHidden="#SelectTheme"
+                              value="Default" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                        <items>
+                            <FXCollections fx:factory="observableArrayList">
+                                <String fx:value="Default"/>
+                                <String fx:value="Emilia"/>
+                                <String fx:value="Rem"/>
+                                <String fx:value="Custom"/>
+                            </FXCollections>
+                        </items>
+                    </ComboBox>
+                    <ColorPicker fx:id="setting_colorPicker" disable="true" maxWidth="1.7976931348623157E308"
+                                 onHidden="#SelectColor" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+                    <Button fx:id="setting_background" disable="true" maxWidth="1.7976931348623157E308"
+                            mnemonicParsing="false" onMouseClicked="#SelectBackground" text="从本地选择一张背景图片"
+                            textOverrun="LEADING_ELLIPSIS" GridPane.columnIndex="1" GridPane.rowIndex="4"/>
+                </GridPane>
+            </AnchorPane>
+            <AnchorPane fx:id="right_about_sora" visible="false" AnchorPane.bottomAnchor="0.0"
+                        AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0"/>
+            <AnchorPane fx:id="right_about_soft" visible="false" AnchorPane.bottomAnchor="0.0"
+                        AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0"/>
+            <AnchorPane fx:id="right_sponsor" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+                        AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                <ImageView fitHeight="200.0" fitWidth="192.0" preserveRatio="true" AnchorPane.leftAnchor="30.0"
+                           AnchorPane.topAnchor="30.0">
+                    <Image url="@../images/alipay.png"/>
+                </ImageView>
+                <ImageView fitHeight="200.0" fitWidth="227.0" layoutX="163.0" layoutY="8.0" preserveRatio="true"
+                           AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="30.0">
+                    <Image url="@../images/weipay.png"/>
+                </ImageView>
+            </AnchorPane>
+        </AnchorPane>
+    </center>
     <stylesheets>
         <URL value="@../css/Default.css"/>
     </stylesheets>

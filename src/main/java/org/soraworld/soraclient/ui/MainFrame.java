@@ -10,13 +10,13 @@ import com.github.axet.wget.WGet;
 import com.google.gson.Gson;
 import javafx.application.Platform;
 import javafx.concurrent.Task;
-import javafx.event.Event;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 import org.apache.commons.io.FileUtils;
 import org.soraworld.soraclient.download.DownloadService;
@@ -44,34 +44,44 @@ import static org.soraworld.soraclient.system.Network.hasNetwork;
 import static org.soraworld.soraclient.util.UnzipNative.unzipNative;
 
 public class MainFrame implements Initializable {
-    public Label launchLabel;
-    public ProgressBar launchProgress;
-    public Button btn_launch;
-    public TextField userbox;
-    public Label userhint;
-    public RadioButton left_game;
+
     public BorderPane mainFrame;
+    public Text title_version;
+    public TextField userbox;
+    public Button btn_launch;
+    public Label launchLabel;
+    public Label userhint;
+    public ProgressBar launchProgress;
+
+    public ToggleGroup leftmenu;
+    public RadioButton left_game;
+    public RadioButton left_setting;
+    public RadioButton left_system;
+    public RadioButton left_about_sora;
+    public RadioButton left_about_soft;
+    public RadioButton left_sponsor;
+
     public AnchorPane right_game;
     public AnchorPane right_setting;
     public AnchorPane right_system;
     public AnchorPane right_about_sora;
     public AnchorPane right_about_soft;
-    public RadioButton left_setting;
-    public ToggleGroup leftmenu;
-    public RadioButton left_system;
-    public RadioButton left_about_sora;
-    public RadioButton left_about_soft;
+    public AnchorPane right_sponsor;
+
     public TextField setting_mxm;
     public TextField setting_resourceUrl;
-    public ColorPicker setting_colorPicker;
     public ComboBox<String> setting_theme;
+    public ColorPicker setting_colorPicker;
     public Button setting_background;
+    public Button game_clean_all;
+    public Button game_clean_mods;
+    public Button game_clean_version;
+    public Button game_clean_config;
 
-    //private DownloadService service = new DownloadService();
     private Gson GSON = new Gson();
     private Settings settingJson = new Settings();
 
-    private void CheckSettings() {
+    private void LoadSettings() {
         try {
             File settings = new File("settings.json");
             if (settings.exists()) {
@@ -99,20 +109,20 @@ public class MainFrame implements Initializable {
                                 + ");theme-color-dark:rgba("
                                 + red + "," + green + "," + blue + "," + (opacity + 1) / 2
                                 + ");");
-                        changeCustomBackground();
+                        loadCustomBackground();
                     } else {
                         setting_colorPicker.setDisable(true);
                         setting_background.setDisable(true);
                     }
 
                 } else {
-                    System.out.println("invalid json");
                     settingJson = new Settings();
                     String jsonString = GSON.toJson(settingJson);
                     settings.createNewFile();
                     BufferedWriter bw = new BufferedWriter(new FileWriter(settings));
                     bw.write(jsonString);
                     bw.close();
+                    GameClean(".minecraft/versions/client");
                 }
             } else {
                 String jsonString = GSON.toJson(settingJson);
@@ -120,62 +130,231 @@ public class MainFrame implements Initializable {
                 BufferedWriter bw = new BufferedWriter(new FileWriter(settings));
                 bw.write(jsonString);
                 bw.close();
+                GameClean(".minecraft/versions/client");
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    public void CloseClicked() {
-        //service.shutdownNow();
+    private void SaveSettings() {
+        try {
+            settingJson.jvmMxm = setting_mxm.getText();
+            settingJson.userToken.name = userbox.getText();
+            settingJson.resourceUrl = setting_resourceUrl.getText();
+            File settings = new File("settings.json");
+            settings.createNewFile();
+            String jsonString = GSON.toJson(settingJson);
+            BufferedWriter bw = new BufferedWriter(new FileWriter(settings));
+            bw.write(jsonString);
+            bw.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void loadCustomColor() {
+        Color themeColor = Color.valueOf(settingJson.theme.color);
+        int red = (int) (themeColor.getRed() * 255);
+        int green = (int) (themeColor.getGreen() * 255);
+        int blue = (int) (themeColor.getBlue() * 255);
+        double opacity = themeColor.getOpacity();
+        mainFrame.setStyle(mainFrame.getStyle() +
+                "theme-color: rgba("
+                + red + "," + green + "," + blue + "," + opacity
+                + ");theme-color-dark:rgba("
+                + red + "," + green + "," + blue + "," + (opacity + 1) / 2
+                + ");");
+    }
+
+    private void loadCustomBackground() {
+        try {
+            File background = new File(settingJson.theme.url);
+            if (background.exists()) {
+                String url = background.toURI().toURL().toExternalForm();
+                mainFrame.setStyle(mainFrame.getStyle() + "-fx-background-image: url(\"" + url + "\");-fx-background-size: cover;-fx-background-position: center;");
+            }
+        } catch (Exception ignored) {
+            System.out.println("ignored load settings");
+        }
+    }
+
+    private boolean checkInput() {
+        String username = userbox.getText();
+        if (username.matches("^[a-zA-z][a-zA-Z0-9_]{2,9}$")) {
+            return true;
+        }
+        Platform.runLater(() -> {
+            userbox.requestFocus();
+            userhint.setText("请输入游戏Id[以字母开头,3-10位字母,数字,下划线组合]");
+        });
+        return false;
+    }
+
+    private void GameClean(String path) {
+        File modsDir = new File(path);
+        if (modsDir.exists() && modsDir.isDirectory()) {
+            try {
+                System.out.println("deleting game dir");
+                FileUtils.deleteDirectory(modsDir);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    public void SelectTheme() {
+        settingJson.theme.id = setting_theme.getValue();
+        if ("Custom".equals(settingJson.theme.id)) {
+            setting_colorPicker.setDisable(false);
+            setting_background.setDisable(false);
+            loadCustomColor();
+            loadCustomBackground();
+        } else {
+            setting_colorPicker.setDisable(true);
+            setting_background.setDisable(true);
+            mainFrame.setStyle("");
+        }
+        mainFrame.getStylesheets().clear();
+        mainFrame.getStylesheets().add(getClass().getResource("/assets/css/" + settingJson.theme.id + ".css").toExternalForm());
+        System.out.println("no style ?" + mainFrame.getStyle());
+        System.out.println("stylesheet:" + mainFrame.getStylesheets());
+        SaveSettings();
+    }
+
+    public void SelectColor() {
+        settingJson.theme.color = setting_colorPicker.getValue().toString();
+        loadCustomColor();
+        SaveSettings();
+    }
+
+    public void SelectBackground() {
+
+        FileChooser fileChooser = new FileChooser();
+        File background;
+        try {
+            background = new File(setting_background.getText());
+            if (background.exists()) {
+                fileChooser.setInitialDirectory(background.getParentFile());
+            }
+        } catch (Exception ignored) {
+            System.out.println("ignored theme click");
+        }
+
+        fileChooser.setTitle("选择一张背景图片");
+        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("图片", "*.jpg", "*.jpeg", "*.png", "*.bmp"));
+        background = fileChooser.showOpenDialog(mainStage);
+        if (background != null) {
+            setting_background.setText(background.getPath());
+        }
+        settingJson.theme.url = setting_background.getText();
+        loadCustomBackground();
+        SaveSettings();
+    }
+
+    public void WindowClose() {
         mainStage.close();
     }
 
-    public void MiniClicked() {
+    public void WindowMinimize() {
         mainStage.setIconified(true);
     }
 
-    public void MouseDragged(MouseEvent mouseEvent) {
+    public void WindowPressed(MouseEvent mouseEvent) {
+        PosX = mouseEvent.getScreenX() - mainStage.getX();
+        PosY = mouseEvent.getScreenY() - mainStage.getY();
+    }
+
+    public void WindowDragged(MouseEvent mouseEvent) {
         mainStage.setX(mouseEvent.getScreenX() - PosX);
         mainStage.setY(mouseEvent.getScreenY() - PosY);
     }
 
-    public void MousePressed(MouseEvent mouseEvent) {
-        PosX = mouseEvent.getScreenX() - mainStage.getX();
-        PosY = mouseEvent.getScreenY() - mainStage.getY();
+    public void LeftMenuClicked(MouseEvent mouseEvent) {
+        right_game.setVisible(false);
+        right_setting.setVisible(false);
+        right_system.setVisible(false);
+        right_about_sora.setVisible(false);
+        right_about_soft.setVisible(false);
+        right_sponsor.setVisible(false);
+        Object source = mouseEvent.getSource();
+        if (source.equals(left_game))
+            right_game.setVisible(true);
+        if (source.equals(left_setting))
+            right_setting.setVisible(true);
+        if (source.equals(left_system))
+            right_system.setVisible(true);
+        if (source.equals(left_about_sora))
+            right_about_sora.setVisible(true);
+        if (source.equals(left_about_soft))
+            right_about_soft.setVisible(true);
+        if (source.equals(left_sponsor))
+            right_sponsor.setVisible(true);
+    }
+
+    public void GameCleanClicked(MouseEvent mouseEvent) {
+        Object source = mouseEvent.getSource();
+        if (source.equals(game_clean_all))
+            GameClean(".minecraft");
+        if (source.equals(game_clean_mods))
+            GameClean(".minecraft/mods");
+        if (source.equals(game_clean_version))
+            GameClean(".minecraft/versions");
+        if (source.equals(game_clean_config)) {
+            GameClean(".minecraft/config");
+            FileUtils.deleteQuietly(new File(".minecraft/options.txt"));
+            FileUtils.deleteQuietly(new File(".minecraft/optionsof.txt"));
+        }
+    }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        LoadSettings();
+        title_version.setText(settingJson.version);
     }
 
     public void LaunchGame() {
         SaveSettings();
         userhint.setText("");
-        Task task = new Task() {
+        Task task = LaunchTask();
+        btn_launch.disableProperty().bind(task.runningProperty());
+        launchProgress.visibleProperty().bind(task.runningProperty());
+        launchProgress.progressProperty().bind(task.progressProperty());
+        launchLabel.visibleProperty().bind(task.runningProperty());
+        launchLabel.textProperty().bind(task.titleProperty());
+        new Thread(task).start();
+    }
+
+    private Task LaunchTask() {
+        return new Task() {
             @Override
             protected Object call() throws Exception {
                 updateTitle("正在检查启动参数....");
                 try {
-                    System.out.println("start checking json");
+                    /// 检查更新JSON文件
                     File json = new File(".minecraft/versions/client/client.json");
                     if (hasNetwork()) {
-                        System.out.println("has network");
                         json.delete();
-                        System.out.println("downloaded");
                         WGet wGet = new WGet(new URL(Reference.ResourcesURL + ".minecraft/versions/client/client.json"), json);
-                        System.out.println("downloaded");
                         wGet.download();
-                        System.out.println("downloaded");
                     } else {
-                        System.out.println("no nectwork");
                         if (!json.exists()) {
                             throw new NoJsonNet();
                         }
                     }
-                    System.out.println("start checking username");
-                    if (isValidId()) {
-                        System.out.println("valid start fetch");
+                    /// 检查用户ID并启动
+                    if (checkInput()) {
+                        Minecraft minecraft = GSON.fromJson(FileUtils.readFileToString(json, Charset.defaultCharset()), Minecraft.class);
                         List<Index> indices = new ArrayList<>();
                         updateTitle("正在获取版本信息...");
                         indices.clear();
-                        Minecraft minecraft = GSON.fromJson(FileUtils.readFileToString(json, Charset.defaultCharset()), Minecraft.class);
+                        /// 检查版本是否更新
+                        if (!settingJson.version.equals(minecraft.version)) {
+                            GameClean(".minecraft/mods");
+                            settingJson.version = minecraft.version;
+                            Platform.runLater(() -> title_version.setText(settingJson.version));
+                            SaveSettings();
+                        }
                         DownloadService jsonService = new DownloadService();
                         minecraft.fetchJson(indices);
                         if (indices.size() > 0 && !hasNetwork())
@@ -228,6 +407,7 @@ public class MainFrame implements Initializable {
                         }
                         updateTitle("正在更新模组文件...");
                         indices.clear();
+
                         File modJson = new File(".minecraft/mods/mods.json");
                         Mods mods = GSON.fromJson(FileUtils.readFileToString(modJson, Charset.defaultCharset()), Mods.class);
                         DownloadService modService = new DownloadService();
@@ -279,7 +459,7 @@ public class MainFrame implements Initializable {
                         npcService.shutdown();
                         System.out.println("===shut down=====");
                         //Thread.sleep(1000);
-                        Platform.runLater(() -> CloseClicked());
+                        Platform.runLater(() -> WindowClose());
                         System.out.println("Task Finished!");
                     }
                 } catch (NoJsonNet e) {
@@ -290,169 +470,7 @@ public class MainFrame implements Initializable {
                 return null;
             }
         };
-        btn_launch.disableProperty().bind(task.runningProperty());
-        launchProgress.visibleProperty().bind(task.runningProperty());
-        launchProgress.progressProperty().bind(task.progressProperty());
-        launchLabel.visibleProperty().bind(task.runningProperty());
-        launchLabel.textProperty().bind(task.titleProperty());
-        new Thread(task).start();
-        System.out.println("Task Started!");
     }
 
-    private void SaveSettings() {
-        try {
-            settingJson.jvmMxm = setting_mxm.getText();
-            settingJson.userToken.name = userbox.getText();
-            settingJson.resourceUrl = setting_resourceUrl.getText();
-            File settings = new File("settings.json");
-            settings.createNewFile();
-            String jsonString = GSON.toJson(settingJson);
-            BufferedWriter bw = new BufferedWriter(new FileWriter(settings));
-            bw.write(jsonString);
-            bw.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
 
-    private boolean isValidId() {
-        String username = userbox.getText();
-        if (username.matches("^[a-zA-z][a-zA-Z0-9_]{2,9}$")) {
-            return true;
-        }
-        Platform.runLater(() -> {
-            userbox.requestFocus();
-            userhint.setText("请输入游戏Id[以字母开头,3-10位字母,数字,下划线组合]");
-        });
-        return false;
-    }
-
-    public void TrayClicked(MouseEvent mouseEvent) {
-
-    }
-
-    public void LeftGameClicked(MouseEvent mouseEvent) {
-        right_game.setVisible(true);
-        right_setting.setVisible(false);
-        right_system.setVisible(false);
-        right_about_sora.setVisible(false);
-        right_about_soft.setVisible(false);
-
-    }
-
-    public void LeftSettingClicked(MouseEvent mouseEvent) {
-        right_game.setVisible(false);
-        right_setting.setVisible(true);
-        right_system.setVisible(false);
-        right_about_sora.setVisible(false);
-        right_about_soft.setVisible(false);
-    }
-
-    public void LeftSystemClicked(MouseEvent mouseEvent) {
-        right_game.setVisible(false);
-        right_setting.setVisible(false);
-        right_system.setVisible(true);
-        right_about_sora.setVisible(false);
-        right_about_soft.setVisible(false);
-    }
-
-    public void LeftAboutSoraClicked(MouseEvent mouseEvent) {
-        right_game.setVisible(false);
-        right_setting.setVisible(false);
-        right_system.setVisible(false);
-        right_about_sora.setVisible(true);
-        right_about_soft.setVisible(false);
-    }
-
-    public void LeftAboutSoftClicked(MouseEvent mouseEvent) {
-        right_game.setVisible(false);
-        right_setting.setVisible(false);
-        right_system.setVisible(false);
-        right_about_sora.setVisible(false);
-        right_about_soft.setVisible(true);
-    }
-
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        CheckSettings();
-    }
-
-    public void SwitchTheme() {
-
-    }
-
-    public void SwitchCustomColor() {
-        settingJson.theme.color = setting_colorPicker.getValue().toString();
-        changeCustomColor();
-        SaveSettings();
-    }
-
-    public void ThemeHidden(Event event) {
-        settingJson.theme.id = setting_theme.getValue();
-        if ("Custom".equals(settingJson.theme.id)) {
-            setting_colorPicker.setDisable(false);
-            setting_background.setDisable(false);
-            changeCustomColor();
-            changeCustomBackground();
-        } else {
-            setting_colorPicker.setDisable(true);
-            setting_background.setDisable(true);
-            mainFrame.setStyle("");
-        }
-        mainFrame.getStylesheets().clear();
-        mainFrame.getStylesheets().add(getClass().getResource("/assets/css/" + settingJson.theme.id + ".css").toExternalForm());
-        System.out.println(mainFrame.getStylesheets());
-        SaveSettings();
-    }
-
-    private void changeCustomColor() {
-        Color themeColor = Color.valueOf(settingJson.theme.color);
-        int red = (int) (themeColor.getRed() * 255);
-        int green = (int) (themeColor.getGreen() * 255);
-        int blue = (int) (themeColor.getBlue() * 255);
-        double opacity = themeColor.getOpacity();
-        mainFrame.setStyle(mainFrame.getStyle() +
-                "theme-color: rgba("
-                + red + "," + green + "," + blue + "," + opacity
-                + ");theme-color-dark:rgba("
-                + red + "," + green + "," + blue + "," + (opacity + 1) / 2
-                + ");");
-    }
-
-    private void changeCustomBackground() {
-        try {
-            File background = new File(settingJson.theme.url);
-            if (background.exists()) {
-                System.out.println("custom background exist! style:" + mainFrame.getStyle());
-                String url = background.toURI().toURL().toExternalForm();
-                mainFrame.setStyle(mainFrame.getStyle() + "-fx-background-image: url(\"" + url + "\");");
-            }
-        } catch (Exception ignored) {
-            System.out.println("ignored load settings");
-        }
-    }
-
-    public void ThemeBackgroundClicked(MouseEvent mouseEvent) {
-
-        FileChooser fileChooser = new FileChooser();
-        File background;
-        try {
-            background = new File(setting_background.getText());
-            if (background.exists()) {
-                fileChooser.setInitialDirectory(background.getParentFile());
-            }
-        } catch (Exception ignored) {
-            System.out.println("ignored theme click");
-        }
-
-        fileChooser.setTitle("选择一张背景图片");
-        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("图片", "*.jpg", "*.jpeg", "*.png", "*.bmp"));
-        background = fileChooser.showOpenDialog(mainStage);
-        if (background != null) {
-            setting_background.setText(background.getPath());
-        }
-        settingJson.theme.url = setting_background.getText();
-        changeCustomBackground();
-        SaveSettings();
-    }
 }

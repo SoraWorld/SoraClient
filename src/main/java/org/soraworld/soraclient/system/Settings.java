@@ -7,11 +7,12 @@
 package org.soraworld.soraclient.system;
 
 import com.google.gson.annotations.SerializedName;
-import javafx.scene.paint.Color;
 
 import java.util.UUID;
 
 public class Settings {
+    @SerializedName("version")
+    public String version;
     @SerializedName("jvmMxm")
     public String jvmMxm;
     @SerializedName("userToken")
@@ -22,6 +23,7 @@ public class Settings {
     public Theme theme;
 
     public Settings() {
+        version = "";
         jvmMxm = "1024";
         userToken = new UserToken();
         theme = new Theme();
@@ -54,7 +56,7 @@ public class Settings {
 
         public Theme() {
             id = "Default";
-            color = Color.WHITE.toString();
+            color = "0x00b6ff80";
         }
     }
 }

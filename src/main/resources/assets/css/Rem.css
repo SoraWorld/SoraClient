@@ -30,6 +30,10 @@
 }
 
 /* Layout definitions */
+.title {
+    -fx-font-family: 'system';
+    -fx-font-size: 20;
+}
 .left-row {
     -fx-pref-height: 35;
 }
@@ -63,7 +67,7 @@
 #mainFrame {
     -fx-border-color: theme-color;
     -fx-border-width: 1;
-    -fx-background-size: stretch;
-    -fx-background-position: 0 0;
-    -fx-background-image: url("../images/rem.jpg");
+    -fx-background-size: cover;
+    -fx-background-position: center;
+    -fx-background-image: url("../images/rem2.jpg");
 }

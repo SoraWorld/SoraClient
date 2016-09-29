@@ -20,7 +20,7 @@ public class Minecraft {
     @SerializedName("server")
     public String server;
     @SerializedName("version")
-    private String version;
+    public String version;
     @SerializedName("mainClass")
     private String mainClass;
     @SerializedName("libraries")

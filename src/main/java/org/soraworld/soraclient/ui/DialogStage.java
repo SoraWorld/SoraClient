@@ -12,37 +12,35 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import java.io.IOException;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
 public class DialogStage extends Stage {
+
+    private static Double PosX, PosY;
+
     public DialogStage() {
         try {
             initModality(Modality.APPLICATION_MODAL);
+            initStyle(StageStyle.TRANSPARENT);
             ResourceBundle resourceBundle = ResourceBundle.getBundle("assets.lang.Language", Locale.getDefault());
             Parent root = FXMLLoader.load(getClass().getResource("/assets/fxml/DialogStage.fxml"), resourceBundle);
-            setTitle("DialogStage");
-            Button button = (Button) root.lookup("#close");
+            Button button = (Button) root.lookup("#confirm");
             button.setOnAction(e -> close());
-            setScene(new Scene(root, 400, 300));
-            //initStyle(StageStyle.UNDECORATED);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public DialogStage(String message) {
-        try {
-            initModality(Modality.APPLICATION_MODAL);
-            ResourceBundle resourceBundle = ResourceBundle.getBundle("assets.lang.Language", Locale.getDefault());
-            Parent root = FXMLLoader.load(getClass().getResource("/assets/fxml/DialogStage.fxml"), resourceBundle);
-            setTitle(message);
-            Button button = (Button) root.lookup("#close");
-            button.setOnAction(e -> close());
-            setScene(new Scene(root, 400, 300));
-            //initStyle(StageStyle.UNDECORATED);
+            root.setOnMouseDragged(event -> {
+                setX(event.getScreenX() - PosX);
+                setY(event.getScreenY() - PosY);
+            });
+            root.setOnMousePressed(event -> {
+                PosX = event.getScreenX() - getX();
+                PosY = event.getScreenY() - getY();
+            });
+            Scene scene = new Scene(root, 400, 200);
+            scene.setFill(null);
+            setScene(scene);
         } catch (IOException e) {
             e.printStackTrace();
         }

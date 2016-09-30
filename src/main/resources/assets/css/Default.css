@@ -8,8 +8,8 @@
 }
 
 .root {
-    theme-color: rgba(0, 127, 215, 0.51);
-    theme-color-dark: rgba(0, 127, 215, 0.8);
+    theme-color: rgba(255, 255, 255, 0.1);
+    theme-color-dark: rgba(222, 222, 222, 0.22);
     -fx-border-color: theme-color;
     -fx-border-width: 1;
     -fx-background-size: cover;
@@ -30,19 +30,9 @@
 }
 
 .button {
-    /*-fx-text-fill: black;*/
     -fx-background-color: rgba(255, 255, 255, 0.55);
     -fx-background-radius: 2;
-    /*-fx-background-image:;*/
-    /*-fx-border-color: #7f3799;*/
-    /*-fx-border-radius:8;*/
-    /*-fx-border-width:3;*/
-    /*-fx-padding:0;*/
-    /*-fx-min-height, -fx-pref-height, -fx-max-height*/
-    /*-fx-min-width, -fx-pref-width, -fx-max-width*/
     -fx-cursor: hand;
-    /*-fx-opacity*/
-    /*visibility*/
 }
 
 .button:hover {
@@ -105,7 +95,7 @@
 }
 
 .progress-bar .track {
-    -fx-background-color: derive(theme-color, 60%);
+    -fx-background-color: derive(theme-color, 50%);
 }
 
 /* top */

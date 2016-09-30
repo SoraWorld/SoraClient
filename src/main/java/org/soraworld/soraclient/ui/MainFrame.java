@@ -213,6 +213,7 @@ public class MainFrame implements Initializable {
         if ("Custom".equals(settingJson.theme.id)) {
             setting_colorPicker.setDisable(false);
             setting_background.setDisable(false);
+            setting_colorPicker.setValue(Color.valueOf(settingJson.theme.color));
             loadCustomColor();
             loadCustomBackground();
         } else {
@@ -346,6 +347,7 @@ public class MainFrame implements Initializable {
                         WGet wGet = new WGet(new URL(Reference.ResourcesURL + ".minecraft/versions/client/client.json"), json);
                         wGet.download();
                     } else {
+                        System.out.println("no network");
                         if (!json.exists()) {
                             throw new NoJsonNet();
                         }
@@ -404,6 +406,8 @@ public class MainFrame implements Initializable {
                         DownloadService assetService = new DownloadService();
                         assets.download(indices);
                         int size = indices.size();
+                        if (size > 0 && !hasNetwork())
+                            throw new NoJsonNet();
                         for (int i = 0; i < size; i++) {
                             assetService.addIndex(indices.get(i));
                             updateProgress(i, size);
@@ -415,7 +419,6 @@ public class MainFrame implements Initializable {
                         }
                         updateTitle("正在更新模组文件...");
                         indices.clear();
-
                         File modJson = new File(".minecraft/mods/mods.json");
                         Mods mods = GSON.fromJson(FileUtils.readFileToString(modJson, Charset.defaultCharset()), Mods.class);
                         DownloadService modService = new DownloadService();
@@ -458,6 +461,7 @@ public class MainFrame implements Initializable {
                             }
                         }).start();
                         updateTitle("游戏已经启动,祝您游戏愉快*_^");
+                        // 更新NPC资源
                         indices.clear();
                         File npcJson = new File(".minecraft/customnpcs/npcs.json");
                         Npcs npcs = GSON.fromJson(FileUtils.readFileToString(npcJson, Charset.defaultCharset()), Npcs.class);
@@ -466,7 +470,6 @@ public class MainFrame implements Initializable {
                         indices.forEach(npcService::addIndex);
                         npcService.shutdown();
                         System.out.println("===shut down=====");
-                        //Thread.sleep(1000);
                         Platform.runLater(() -> WindowClose());
                         System.out.println("Task Finished!");
                     }

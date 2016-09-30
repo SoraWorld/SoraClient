@@ -22,7 +22,6 @@ class DownloadTask implements Runnable {
     private DownloadInfo info;
     private long PID;
     private double progress = 0;
-    private long last = 0;
 
     public DownloadTask(String source, String path) {
         target = new File(path);
@@ -33,7 +32,6 @@ class DownloadTask implements Runnable {
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
-        info.extract();
     }
 
     public DownloadTask(String source, File file) {
@@ -45,11 +43,9 @@ class DownloadTask implements Runnable {
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
-        info.extract();
     }
 
     DownloadTask(Index library) {
-        ///////////////////////////////////////////
         target = new File(library.path);
         target.delete();
         target.getParentFile().mkdirs();
@@ -58,21 +54,17 @@ class DownloadTask implements Runnable {
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
-        info.extract();
     }
 
     @Override
     public void run() {
+        info.extract();
         WGet wGet = new WGet(info, target);
         wGet.download(new AtomicBoolean(false), () -> progress = info.getCount() / (double) info.getLength());
     }
 
     double getProgress() {
         return progress;
-    }
-
-    public String getPath() {
-        return target.getAbsolutePath();
     }
 
     public long getPID() {
@@ -82,6 +74,5 @@ class DownloadTask implements Runnable {
     void setPID(long _pid) {
         PID = _pid;
     }
-
 
 }

@@ -1,11 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
 <AnchorPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
-            minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.76-ea">
-  <children>
-    <Button fx:id="close" layoutX="243.0" layoutY="167.0" mnemonicParsing="false" prefHeight="66.0" prefWidth="115.0"
-            text="确认"/>
-  </children>
+            minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@../css/Dialog.css"
+            xmlns="http://javafx.com/javafx/8.0.60">
+    <VBox alignment="CENTER" layoutY="-12.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="20.0"
+          AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="10.0">
+        <Label prefHeight="95.0" prefWidth="337.0"
+               text="网络连接发现异常!本程序在尝试启动过程中,发现你的客户端缺失必要文件,当我想从网络获取时,又发现你这家伙没联网...如果你想单机,请先确保客户端是完整的!" wrapText="true">
+            <font>
+                <Font size="14.0"/>
+            </font>
+        </Label>
+        <Button fx:id="confirm" mnemonicParsing="false" prefHeight="33.0" prefWidth="151.0" text="确       认"/>
+    </VBox>
 </AnchorPane>

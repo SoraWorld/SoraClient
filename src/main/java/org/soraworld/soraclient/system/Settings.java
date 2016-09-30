@@ -56,7 +56,7 @@ public class Settings {
 
         public Theme() {
             id = "Default";
-            color = "0x00b6ff80";
+            color = "0xff6666";
         }
     }
 }

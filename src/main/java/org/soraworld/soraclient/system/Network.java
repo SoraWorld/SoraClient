@@ -6,18 +6,19 @@
 
 package org.soraworld.soraclient.system;
 
-import java.net.MalformedURLException;
 import java.net.URL;
+import java.net.URLConnection;
 
-import static com.github.axet.wget.WGet.getHtml;
-
-public final class Network {
-
+public class Network {
     public static boolean hasNetwork() {
         try {
-            return getHtml(new URL("http://example.com")).startsWith("<!doctype html>");
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
+            URLConnection connection = new URL("http://www.baidu.com/").openConnection();
+            connection.setConnectTimeout(1000);
+            connection.setReadTimeout(1000);
+            connection.connect();
+            return true;
+        } catch (Exception e) {
+            System.out.println("no network");
             return false;
         }
     }

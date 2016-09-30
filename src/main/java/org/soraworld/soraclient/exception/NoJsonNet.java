@@ -11,7 +11,7 @@ import org.soraworld.soraclient.ui.DialogStage;
 public class NoJsonNet extends Throwable {
 
     public void dispose() {
-        DialogStage stage = new DialogStage("必要文件需要更新,而您的网络连接异常!");
+        DialogStage stage = new DialogStage();
         stage.show();
     }
 }

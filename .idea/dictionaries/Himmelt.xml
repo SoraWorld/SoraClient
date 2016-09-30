@@ -2,6 +2,7 @@
   <dictionary name="Himmelt">
     <words>
       <w>baidu</w>
+      <w>closex</w>
       <w>colorpicker</w>
       <w>creativecommons</w>
       <w>customnpcs</w>
@@ -21,6 +22,7 @@
       <w>topbar</w>
       <w>userbox</w>
       <w>userhint</w>
+      <w>vbox</w>
     </words>
   </dictionary>
 </component>

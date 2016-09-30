@@ -3,235 +3,89 @@
 <?import javafx.collections.FXCollections?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
-<?import javafx.scene.Cursor?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.paint.*?>
 <?import javafx.scene.text.*?>
-<?import java.lang.*?>
+<?import java.lang.String?>
 <?import java.net.URL?>
 <BorderPane xmlns:fx="http://javafx.com/fxml/1" fx:id="mainFrame" focusTraversable="true"
-            onMouseDragged="#WindowDragged" onMousePressed="#WindowPressed" prefWidth="600.0"
-            xmlns="http://javafx.com/javafx/8.0.60" fx:controller="org.soraworld.soraclient.ui.MainFrame">
+            onMouseClicked="#WindowClicked" onMouseDragged="#WindowDragged" onMousePressed="#WindowPressed"
+            prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.76-ea"
+            fx:controller="org.soraworld.soraclient.ui.MainFrame">
     <top>
-        <AnchorPane id="topbar" prefHeight="44.0" styleClass="icon" BorderPane.alignment="CENTER">
-            <BorderPane.margin>
-                <Insets/>
-            </BorderPane.margin>
-            <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true"
-                       AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="5.0">
-                <Image url="@../images/icon.png"/>
-            </ImageView>
-            <HBox layoutX="461.0" layoutY="10.0" spacing="5.0" AnchorPane.rightAnchor="5.0">
-                <Button mnemonicParsing="false" onMouseClicked="#WindowMinimize" styleClass="icon" text="%icon.mini"/>
-                <Button disable="true" mnemonicParsing="false" text="%icon.tray"/>
-                <Button mnemonicParsing="false" onMouseClicked="#WindowClose" styleClass="icon" text="%icon.close"/>
-            </HBox>
-            <Text boundsType="VISUAL" cache="true" fill="WHITE" layoutX="180.0" layoutY="32.0" styleClass="title"
-                  text="空の境界MC"/>
-            <Text fx:id="title_version" boundsType="VISUAL" cache="true" fill="WHITE" layoutX="320.0" layoutY="32.0"
+        <AnchorPane prefHeight="44.0" styleClass="top">
+            <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" styleClass="logo"
+                       AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="5.0"/>
+            <Text boundsType="VISUAL" cache="true" layoutX="180.0" layoutY="32.0" styleClass="title" text="空之境界MC"/>
+            <Text fx:id="title_version" boundsType="VISUAL" cache="true" layoutX="320.0" layoutY="32.0"
                   styleClass="title"/>
+            <HBox layoutX="461.0" layoutY="10.0" styleClass="closex" AnchorPane.rightAnchor="5.0">
+                <Button onMouseClicked="#WindowMinimize" text="%icon.mini"/>
+                <Button disable="true" text="%icon.tray"/>
+                <Button onMouseClicked="#WindowClose" text="%icon.close"/>
+            </HBox>
         </AnchorPane>
     </top>
     <left>
-        <AnchorPane focusTraversable="true" prefHeight="356.0" prefWidth="172.0" BorderPane.alignment="CENTER">
-            <VBox focusTraversable="true" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
+        <AnchorPane prefHeight="356.0" prefWidth="172.0" styleClass="left">
+            <VBox styleClass="menu-vbox" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
                   AnchorPane.topAnchor="0.0">
-                <cursor>
-                    <Cursor fx:constant="HAND"/>
-                </cursor>
-                <AnchorPane styleClass="left-row">
-                    <RadioButton fx:id="left_game" contentDisplay="CENTER" layoutX="7.0" mnemonicParsing="false"
-                                 onMouseClicked="#LeftMenuClicked" selected="true" styleClass="left-menu" text="空 之 境 界"
+                <AnchorPane styleClass="menu-row">
+                    <RadioButton fx:id="left_game" onMouseClicked="#LeftMenuClicked" selected="true" text="空 之 境 界"
                                  AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
                                  AnchorPane.topAnchor="0.0">
-                        <textFill>
-                            <LinearGradient>
-                                <stops>
-                                    <Stop color="#bf1515"/>
-                                    <Stop color="#2356f2" offset="1.0"/>
-                                </stops>
-                            </LinearGradient>
-                        </textFill>
                         <toggleGroup>
-                            <ToggleGroup fx:id="leftmenu"/>
+                            <ToggleGroup fx:id="menuGroup"/>
                         </toggleGroup>
-                        <font>
-                            <Font size="14.0"/>
-                        </font>
-                        <opaqueInsets>
-                            <Insets/>
-                        </opaqueInsets>
                     </RadioButton>
-                    <Label layoutX="14.0" layoutY="13.0" text="%icon.soraworld" AnchorPane.bottomAnchor="0.0"
-                           AnchorPane.leftAnchor="16.0" AnchorPane.topAnchor="0.0">
-                        <styleClass>
-                            <String fx:value="icon"/>
-                            <String fx:value="icon-mid"/>
-                        </styleClass>
-                    </Label>
+                    <Text layoutX="19.0" layoutY="24.0" styleClass="icon" text="%icon.soraworld"/>
                 </AnchorPane>
-                <AnchorPane styleClass="left-row">
-                    <RadioButton fx:id="left_setting" contentDisplay="CENTER" layoutX="7.0" mnemonicParsing="false"
-                                 onMouseClicked="#LeftMenuClicked" styleClass="left-menu" text="游 戏 设 置"
-                                 toggleGroup="$leftmenu" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
-                                 AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                        <textFill>
-                            <LinearGradient>
-                                <stops>
-                                    <Stop color="#bf1515"/>
-                                    <Stop color="#2356f2" offset="1.0"/>
-                                </stops>
-                            </LinearGradient>
-                        </textFill>
-                        <font>
-                            <Font size="14.0"/>
-                        </font>
-                        <opaqueInsets>
-                            <Insets/>
-                        </opaqueInsets>
-                    </RadioButton>
-                    <Label layoutX="14.0" layoutY="13.0" text="%icon.game" AnchorPane.bottomAnchor="0.0"
-                           AnchorPane.leftAnchor="16.0" AnchorPane.topAnchor="0.0">
-                        <styleClass>
-                            <String fx:value="icon"/>
-                            <String fx:value="icon-mid"/>
-                        </styleClass>
-                    </Label>
+                <AnchorPane styleClass="menu-row">
+                    <RadioButton fx:id="left_setting" onMouseClicked="#LeftMenuClicked" text="游 戏 设 置"
+                                 toggleGroup="$menuGroup" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+                                 AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0"/>
+                    <Text layoutX="19.0" layoutY="24.0" styleClass="icon" text="%icon.game"/>
                 </AnchorPane>
-                <AnchorPane styleClass="left-row">
-                    <RadioButton fx:id="left_system" contentDisplay="CENTER" layoutX="7.0" mnemonicParsing="false"
-                                 onMouseClicked="#LeftMenuClicked" styleClass="left-menu" text="系 统 设 置"
-                                 toggleGroup="$leftmenu" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
-                                 AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                        <textFill>
-                            <LinearGradient>
-                                <stops>
-                                    <Stop color="#bf1515"/>
-                                    <Stop color="#2356f2" offset="1.0"/>
-                                </stops>
-                            </LinearGradient>
-                        </textFill>
-                        <font>
-                            <Font size="14.0"/>
-                        </font>
-                        <opaqueInsets>
-                            <Insets/>
-                        </opaqueInsets>
-                    </RadioButton>
-                    <Label layoutX="14.0" layoutY="13.0" text="%icon.shezhi" AnchorPane.bottomAnchor="0.0"
-                           AnchorPane.leftAnchor="16.0" AnchorPane.topAnchor="0.0">
-                        <styleClass>
-                            <String fx:value="icon"/>
-                            <String fx:value="icon-mid"/>
-                        </styleClass>
-                    </Label>
+                <AnchorPane styleClass="menu-row">
+                    <RadioButton fx:id="left_system" onMouseClicked="#LeftMenuClicked" text="系 统 设 置"
+                                 toggleGroup="$menuGroup" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+                                 AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0"/>
+                    <Text layoutX="19.0" layoutY="24.0" styleClass="icon" text="%icon.shezhi"/>
                 </AnchorPane>
-                <AnchorPane styleClass="left-row">
-                    <RadioButton fx:id="left_about_sora" contentDisplay="CENTER" layoutX="7.0"
-                                 onMouseClicked="#LeftMenuClicked" styleClass="left-menu" text="关 于 空 境"
-                                 toggleGroup="$leftmenu" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
-                                 AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                        <textFill>
-                            <LinearGradient>
-                                <stops>
-                                    <Stop color="#bf1515"/>
-                                    <Stop color="#2356f2" offset="1.0"/>
-                                </stops>
-                            </LinearGradient>
-                        </textFill>
-                        <font>
-                            <Font size="14.0"/>
-                        </font>
-                        <opaqueInsets>
-                            <Insets/>
-                        </opaqueInsets>
-                    </RadioButton>
-                    <Label layoutX="14.0" layoutY="13.0" text="%icon.heartbeat" AnchorPane.bottomAnchor="0.0"
-                           AnchorPane.leftAnchor="16.0" AnchorPane.topAnchor="0.0">
-                        <styleClass>
-                            <String fx:value="icon"/>
-                            <String fx:value="icon-mid"/>
-                        </styleClass>
-                    </Label>
+                <AnchorPane styleClass="menu-row">
+                    <RadioButton fx:id="left_about_sora" onMouseClicked="#LeftMenuClicked" text="关 于 空 境"
+                                 toggleGroup="$menuGroup" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+                                 AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0"/>
+                    <Text layoutX="19.0" layoutY="24.0" styleClass="icon" text="%icon.heartbeat"/>
                 </AnchorPane>
-                <AnchorPane styleClass="left-row">
-                    <RadioButton fx:id="left_about_soft" contentDisplay="CENTER" layoutX="7.0"
-                                 onMouseClicked="#LeftMenuClicked" styleClass="left-menu" text="关 于 软 件"
-                                 toggleGroup="$leftmenu" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
-                                 AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                        <textFill>
-                            <LinearGradient>
-                                <stops>
-                                    <Stop color="#bf1515"/>
-                                    <Stop color="#2356f2" offset="1.0"/>
-                                </stops>
-                            </LinearGradient>
-                        </textFill>
-                        <font>
-                            <Font size="14.0"/>
-                        </font>
-                        <opaqueInsets>
-                            <Insets/>
-                        </opaqueInsets>
-                    </RadioButton>
-                    <Label layoutX="14.0" layoutY="13.0" text="%icon.creativecommons" AnchorPane.bottomAnchor="0.0"
-                           AnchorPane.leftAnchor="16.0" AnchorPane.topAnchor="0.0">
-                        <styleClass>
-                            <String fx:value="icon"/>
-                            <String fx:value="icon-mid"/>
-                        </styleClass>
-                    </Label>
+                <AnchorPane styleClass="menu-row">
+                    <RadioButton fx:id="left_about_soft" onMouseClicked="#LeftMenuClicked" text="关 于 软 件"
+                                 toggleGroup="$menuGroup" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+                                 AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0"/>
+                    <Text layoutX="19.0" layoutY="24.0" styleClass="icon" text="%icon.creativecommons"/>
                 </AnchorPane>
-                <AnchorPane styleClass="left-row">
-                    <RadioButton fx:id="left_sponsor" contentDisplay="CENTER" layoutX="7.0"
-                                 onMouseClicked="#LeftMenuClicked" styleClass="left-menu" text="赞 助 打 赏"
-                                 toggleGroup="$leftmenu" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
-                                 AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                        <textFill>
-                            <LinearGradient>
-                                <stops>
-                                    <Stop color="#bf1515"/>
-                                    <Stop color="#2356f2" offset="1.0"/>
-                                </stops>
-                            </LinearGradient>
-                        </textFill>
-                        <font>
-                            <Font size="14.0"/>
-                        </font>
-                        <opaqueInsets>
-                            <Insets/>
-                        </opaqueInsets>
-                    </RadioButton>
-                    <Label layoutX="14.0" layoutY="13.0" text="%icon.zhuanzhang" AnchorPane.bottomAnchor="0.0"
-                           AnchorPane.leftAnchor="16.0" AnchorPane.topAnchor="0.0">
-                        <styleClass>
-                            <String fx:value="icon"/>
-                            <String fx:value="icon-mid"/>
-                        </styleClass>
-                    </Label>
+                <AnchorPane styleClass="menu-row">
+                    <RadioButton fx:id="left_sponsor" onMouseClicked="#LeftMenuClicked" text="赞 助 打 赏"
+                                 toggleGroup="$menuGroup" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+                                 AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0"/>
+                    <Text layoutX="19.0" layoutY="24.0" styleClass="icon" text="%icon.zhuanzhang"/>
                 </AnchorPane>
             </VBox>
         </AnchorPane>
     </left>
     <center>
-        <AnchorPane prefHeight="355.0" prefWidth="383.0" style="-fx-border-color: #E1E1E2; -fx-border-width: 0 0 0 1;"
-                    BorderPane.alignment="CENTER">
+        <AnchorPane prefHeight="355.0" prefWidth="383.0" styleClass="center" BorderPane.alignment="CENTER">
             <AnchorPane fx:id="right_game" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
                         AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                 <TextField fx:id="userbox" layoutX="225.0" layoutY="170.0" prefHeight="28.0" prefWidth="180.0"
-                           promptText="请输入游戏ID" AnchorPane.bottomAnchor="150.0" AnchorPane.rightAnchor="50.0">
-                    <font>
-                        <Font size="13.0"/>
-                    </font>
-                </TextField>
-                <Label fx:id="userhint" layoutX="49.0" layoutY="278.0" textFill="RED" AnchorPane.bottomAnchor="30.0"
+                           promptText="请输入游戏ID" AnchorPane.bottomAnchor="150.0" AnchorPane.rightAnchor="50.0"/>
+                <Label fx:id="userhint" layoutX="49.0" layoutY="278.0" AnchorPane.bottomAnchor="30.0"
                        AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0"/>
-                <Button fx:id="btn_launch" layoutX="225.0" layoutY="228.0" mnemonicParsing="false"
-                        onMouseClicked="#LaunchGame" prefHeight="60.0" prefWidth="180.0" text="开始游戏"
-                        AnchorPane.bottomAnchor="60.0" AnchorPane.rightAnchor="50.0"/>
-                <Label fx:id="launchLabel" layoutX="20.0" layoutY="313.0" textFill="#00cc25" visible="false"
-                       AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0"/>
+                <Button fx:id="btn_launch" layoutX="225.0" layoutY="228.0" onMouseClicked="#LaunchGame"
+                        prefHeight="60.0" prefWidth="180.0" text="开 始 游 戏" AnchorPane.bottomAnchor="60.0"
+                        AnchorPane.rightAnchor="50.0"/>
+                <Label fx:id="launchLabel" layoutX="20.0" layoutY="313.0" visible="false" AnchorPane.bottomAnchor="30.0"
+                       AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0"/>
                 <ProgressBar fx:id="launchProgress" layoutX="20.0" layoutY="333.0" prefHeight="20.0" progress="0.0"
                              visible="false" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="20.0"
                              AnchorPane.rightAnchor="20.0"/>
@@ -240,16 +94,14 @@
                         AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                 <VBox spacing="18.0" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="150.0"
                       AnchorPane.topAnchor="100.0">
-                    <children>
-                        <Button fx:id="game_clean_all" maxWidth="1.7976931348623157E308"
-                                onMouseClicked="#GameCleanClicked" prefHeight="30.0" text="清除游戏目录(谨慎操作,删除所有游戏文件)"/>
-                        <Button fx:id="game_clean_mods" maxWidth="1.7976931348623157E308"
-                                onMouseClicked="#GameCleanClicked" prefHeight="30.0" text="清除Mods目录(出现Mod冲突时使用)"/>
-                        <Button fx:id="game_clean_version" maxWidth="1.7976931348623157E308"
-                                onMouseClicked="#GameCleanClicked" prefHeight="30.0" text="清除版本目录(反作弊踢出,且上一条没有解决时)"/>
-                        <Button fx:id="game_clean_config" maxWidth="1.7976931348623157E308"
-                                onMouseClicked="#GameCleanClicked" prefHeight="30.0" text="恢复默认设置(Mod独立设置需手动恢复)"/>
-                    </children>
+                    <Button fx:id="game_clean_all" maxWidth="1.7976931348623157E308" onMouseClicked="#GameCleanClicked"
+                            prefHeight="30.0" text="清除游戏目录(谨慎操作,删除所有游戏文件)"/>
+                    <Button fx:id="game_clean_mods" maxWidth="1.7976931348623157E308" onMouseClicked="#GameCleanClicked"
+                            prefHeight="30.0" text="清除Mods目录(出现Mod冲突时使用)"/>
+                    <Button fx:id="game_clean_version" maxWidth="1.7976931348623157E308"
+                            onMouseClicked="#GameCleanClicked" prefHeight="30.0" text="清除版本目录(反作弊踢出,且上一条没有解决时)"/>
+                    <Button fx:id="game_clean_config" maxWidth="1.7976931348623157E308"
+                            onMouseClicked="#GameCleanClicked" prefHeight="30.0" text="恢复默认设置(Mod独立设置需手动恢复)"/>
                 </VBox>
             </AnchorPane>
             <AnchorPane fx:id="right_system" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
@@ -297,11 +149,11 @@
                             <Insets left="20.0"/>
                         </padding>
                     </Label>
-                    <TextField fx:id="setting_mxm" text="1024" GridPane.columnIndex="1"/>
-                    <TextField fx:id="setting_resourceUrl" text="https://dn-stc.qbox.me/soraclient/"
+                    <TextField fx:id="setting_mxm" prefHeight="30.0" text="1024" GridPane.columnIndex="1"/>
+                    <TextField fx:id="setting_resourceUrl" prefHeight="30.0" text="https://dn-stc.qbox.me/soraclient/"
                                GridPane.columnIndex="1" GridPane.rowIndex="1"/>
                     <ComboBox fx:id="setting_theme" maxWidth="1.7976931348623157E308" onHidden="#SelectTheme"
-                              value="Default" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                              prefHeight="30.0" value="Default" GridPane.columnIndex="1" GridPane.rowIndex="2">
                         <items>
                             <FXCollections fx:factory="observableArrayList">
                                 <String fx:value="Default"/>
@@ -312,10 +164,12 @@
                         </items>
                     </ComboBox>
                     <ColorPicker fx:id="setting_colorPicker" disable="true" maxWidth="1.7976931348623157E308"
-                                 onHidden="#SelectColor" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+                                 onHidden="#SelectColor" prefHeight="30.0" GridPane.columnIndex="1"
+                                 GridPane.rowIndex="3"/>
                     <Button fx:id="setting_background" disable="true" maxWidth="1.7976931348623157E308"
-                            mnemonicParsing="false" onMouseClicked="#SelectBackground" text="从本地选择一张背景图片"
-                            textOverrun="LEADING_ELLIPSIS" GridPane.columnIndex="1" GridPane.rowIndex="4"/>
+                            mnemonicParsing="false" onMouseClicked="#SelectBackground" prefHeight="30.0"
+                            text="从本地选择一张背景图片" textOverrun="LEADING_ELLIPSIS" GridPane.columnIndex="1"
+                            GridPane.rowIndex="4"/>
                 </GridPane>
             </AnchorPane>
             <AnchorPane fx:id="right_about_sora" visible="false" AnchorPane.bottomAnchor="0.0"

@@ -9,6 +9,7 @@ package org.soraworld.soraclient.ui;
 import com.github.axet.wget.WGet;
 import com.google.gson.Gson;
 import javafx.application.Platform;
+import javafx.collections.ObservableList;
 import javafx.concurrent.Task;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
@@ -53,7 +54,7 @@ public class MainFrame implements Initializable {
     public Label userhint;
     public ProgressBar launchProgress;
 
-    public ToggleGroup leftmenu;
+    public ToggleGroup menuGroup;
     public RadioButton left_game;
     public RadioButton left_setting;
     public RadioButton left_system;
@@ -93,8 +94,12 @@ public class MainFrame implements Initializable {
                     setting_theme.setValue(settingJson.theme.id);
                     setting_colorPicker.setValue(Color.valueOf(settingJson.theme.color));
                     setting_background.setText(settingJson.theme.url);
-                    mainFrame.getStylesheets().clear();
-                    mainFrame.getStylesheets().add(getClass().getResource("/assets/css/" + settingJson.theme.id + ".css").toExternalForm());
+                    ObservableList<String> stylesheets = mainFrame.getStylesheets();
+                    if (stylesheets.size() > 1) {
+                        stylesheets.set(1, getClass().getResource("/assets/css/" + settingJson.theme.id + ".css").toExternalForm());
+                    } else {
+                        stylesheets.add(getClass().getResource("/assets/css/" + settingJson.theme.id + ".css").toExternalForm());
+                    }
                     if ("Custom".equals(settingJson.theme.id)) {
                         setting_colorPicker.setDisable(false);
                         setting_background.setDisable(false);
@@ -215,9 +220,12 @@ public class MainFrame implements Initializable {
             setting_background.setDisable(true);
             mainFrame.setStyle("");
         }
-        mainFrame.getStylesheets().clear();
-        mainFrame.getStylesheets().add(getClass().getResource("/assets/css/" + settingJson.theme.id + ".css").toExternalForm());
-        System.out.println("no style ?" + mainFrame.getStyle());
+        ObservableList<String> stylesheets = mainFrame.getStylesheets();
+        if (stylesheets.size() > 1) {
+            stylesheets.set(1, getClass().getResource("/assets/css/" + settingJson.theme.id + ".css").toExternalForm());
+        } else {
+            stylesheets.add(getClass().getResource("/assets/css/" + settingJson.theme.id + ".css").toExternalForm());
+        }
         System.out.println("stylesheet:" + mainFrame.getStylesheets());
         SaveSettings();
     }
@@ -473,4 +481,7 @@ public class MainFrame implements Initializable {
     }
 
 
+    public void WindowClicked(MouseEvent mouseEvent) {
+        mainFrame.requestFocus();
+    }
 }

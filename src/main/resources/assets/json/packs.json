@@ -2,8 +2,8 @@
   "packs": [
     {
       "name": "ocdpack",
-      "sha1": "",
-      "path": "resourcepacks/ocdpack.zip"
+      "sha1": "93fe138be777b1a9773a9c75df9b2f47bbe393a7",
+      "path": ".minecraft/resourcepacks/ocdpack.zip"
     }
   ]
 }

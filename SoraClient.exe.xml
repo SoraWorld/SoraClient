@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch4jConfig>
+    <dontWrapJar>false</dontWrapJar>
+    <headerType>gui</headerType>
+    <jar>C:\Users\Himmelt\Desktop\SoraClient\out\artifacts\SoraClient.jar</jar>
+    <outfile>C:\Users\Himmelt\Documents\soraclient\SoraClient.exe</outfile>
+    <errTitle>I need Java1.8 or later!</errTitle>
+    <cmdLine></cmdLine>
+    <chdir>.</chdir>
+    <priority>normal</priority>
+    <downloadUrl>http://java.com/download</downloadUrl>
+    <supportUrl></supportUrl>
+    <stayAlive>false</stayAlive>
+    <restartOnCrash>false</restartOnCrash>
+    <manifest></manifest>
+    <icon>C:\Users\Himmelt\Desktop\SoraClient\src\main\resources\assets\images\logo.ico</icon>
+    <singleInstance>
+        <mutexName>SoraClient</mutexName>
+        <windowTitle>SoraClient</windowTitle>
+    </singleInstance>
+    <jre>
+        <path></path>
+        <bundledJre64Bit>false</bundledJre64Bit>
+        <bundledJreAsFallback>false</bundledJreAsFallback>
+        <minVersion>1.8.0_00</minVersion>
+        <maxVersion></maxVersion>
+        <jdkPreference>preferJre</jdkPreference>
+        <runtimeBits>64/32</runtimeBits>
+    </jre>
+    <versionInfo>
+        <fileVersion>1.0.0.0</fileVersion>
+        <txtFileVersion>1.0.0</txtFileVersion>
+        <fileDescription>The Client for SoraWorld Minecraft Server.</fileDescription>
+        <copyright>(c)2016 SoraWorld.</copyright>
+        <productVersion>1.0.0.0</productVersion>
+        <txtProductVersion>1.0.0.0</txtProductVersion>
+        <productName>SoraClient</productName>
+        <companyName>SoraWorld</companyName>
+        <internalName>SoraClient</internalName>
+        <originalFilename>SoraClient.exe</originalFilename>
+        <trademarks>SoraWorld</trademarks>
+        <language>SIMPLIFIED_CHINESE</language>
+    </versionInfo>
+</launch4jConfig>

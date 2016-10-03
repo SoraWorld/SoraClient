@@ -32,7 +32,7 @@ public class Minecraft {
 
     public List<String> getLaunchCmd(String username, String uuid, String xmx, List<Index> indices) {
         List<String> launchCmd = new ArrayList<>();
-        System.out.println("*****command******");
+        //System.out.println("*****command******");
         launchCmd.add("javaw");
         launchCmd.add("-Xmn128m");
         launchCmd.add("-Xmx" + xmx + "m");
@@ -86,14 +86,6 @@ public class Minecraft {
         }
     }
 
-    public void fetchNpcs(List<Index> indices) {
-        for (OSIndex index : natives) {
-            if (index.os.contains(Reference.OS) && index.needUpdate()) {
-                indices.add(index);
-            }
-        }
-    }
-
     private String getClasspath(List<Index> indices) {
         StringBuilder classpath = new StringBuilder();
         for (Index library : libraries) {
@@ -103,5 +95,4 @@ public class Minecraft {
         }
         return classpath.toString();
     }
-
 }

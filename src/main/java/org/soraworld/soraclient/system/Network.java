@@ -16,6 +16,7 @@ public class Network {
             connection.setConnectTimeout(1000);
             connection.setReadTimeout(1000);
             connection.connect();
+            System.out.println("has network");
             return true;
         } catch (Exception e) {
             System.out.println("no network");

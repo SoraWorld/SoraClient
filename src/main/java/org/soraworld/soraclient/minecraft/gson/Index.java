@@ -12,7 +12,6 @@ import org.apache.commons.io.FileUtils;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.Objects;
 
 public class Index {
     @SerializedName("sha1")
@@ -32,7 +31,7 @@ public class Index {
     public boolean needUpdate() {
         try {
             File file = new File(path);
-            return !(file.exists() && Objects.equals(sha1, DigestUtils.sha1Hex(FileUtils.readFileToByteArray(file))));
+            return !(file.exists() && sha1.equals(DigestUtils.sha1Hex(FileUtils.readFileToByteArray(file))));
         } catch (IOException e) {
             return true;
         }

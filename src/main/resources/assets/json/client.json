@@ -293,11 +293,11 @@
       "path": ".minecraft/customnpcs/npcs.json"
     },
     {
-      "sha1": "e3db9322599d3b9fdff8fffa8d34f5b369e0b101",
+      "sha1": "e253c7e4a203c45468bca97563fa4a311960c1e6",
       "path": ".minecraft/resourcepacks/packs.json"
     },
     {
-      "sha1": "6d23fc8cd8b9b348be9caebe08e481aff3c94857",
+      "sha1": "13a94182245fb5c5395a7455c9de681c32c787be",
       "path": ".minecraft/config/configs.json"
     }
   ]

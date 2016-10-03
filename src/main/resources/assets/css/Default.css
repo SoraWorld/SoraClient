@@ -8,8 +8,8 @@
 }
 
 .root {
-    theme-color: rgba(255, 255, 255, 0.1);
-    theme-color-dark: rgba(222, 222, 222, 0.22);
+    theme-color: rgba(0, 231, 125, 0.48);
+    theme-color-dark: rgba(0, 231, 125, 0.75);
     -fx-border-color: theme-color;
     -fx-border-width: 1;
     -fx-background-size: cover;
@@ -149,6 +149,11 @@
 }
 
 /* center */
+
+.system-grid .label {
+    -fx-background-color: rgba(250, 250, 250, 0.6);
+    -fx-padding: 0 0 0 20;
+}
 
 #userbox {
     -fx-font-size: 13;

@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/SoraClient.iml" filepath="$PROJECT_DIR$/SoraClient.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Update/Update.iml" filepath="$PROJECT_DIR$/Update/Update.iml" />
     </modules>
   </component>
 </project>

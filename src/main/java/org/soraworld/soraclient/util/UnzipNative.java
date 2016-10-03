@@ -28,10 +28,6 @@ public class UnzipNative {
                     outFile.createNewFile();
                     input = zipFile.getInputStream(entry);
                     output = new FileOutputStream(outFile);
-//                    int temp = 0;
-//                    while((temp = input.read()) != -1){
-//                        output.write(temp);
-//                    }
                     byte[] temp = new byte[512];
                     int len = 0;
                     while ((len = input.read(temp)) != -1) {

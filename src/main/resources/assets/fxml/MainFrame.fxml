@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.collections.FXCollections?>
-<?import javafx.geometry.*?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
@@ -10,15 +10,16 @@
 <?import java.net.URL?>
 <BorderPane xmlns:fx="http://javafx.com/fxml/1" fx:id="mainFrame" focusTraversable="true"
             onMouseClicked="#WindowClicked" onMouseDragged="#WindowDragged" onMousePressed="#WindowPressed"
-            prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.76-ea"
+            prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.60"
             fx:controller="org.soraworld.soraclient.ui.MainFrame">
     <top>
         <AnchorPane prefHeight="44.0" styleClass="top">
             <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" styleClass="logo"
                        AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="5.0"/>
-            <Text boundsType="VISUAL" cache="true" layoutX="180.0" layoutY="32.0" styleClass="title" text="空之境界MC"/>
+            <Text boundsType="VISUAL" cache="true" layoutX="180.0" layoutY="32.0" stroke="#0048e395"
+                  strokeType="OUTSIDE" strokeWidth="0.3" styleClass="title" text="空之境界MC"/>
             <Text fx:id="title_version" boundsType="VISUAL" cache="true" layoutX="320.0" layoutY="32.0"
-                  styleClass="title"/>
+                  stroke="#0048e494" strokeType="OUTSIDE" strokeWidth="0.3" styleClass="title"/>
             <HBox layoutX="461.0" layoutY="10.0" styleClass="closex" AnchorPane.rightAnchor="5.0">
                 <Button onMouseClicked="#WindowMinimize" text="%icon.mini"/>
                 <Button disable="true" text="%icon.tray"/>
@@ -106,8 +107,8 @@
             </AnchorPane>
             <AnchorPane fx:id="right_system" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
                         AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                <GridPane hgap="15.0" maxWidth="1.7976931348623157E308" vgap="10.0" AnchorPane.leftAnchor="100.0"
-                          AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="100.0">
+                <GridPane hgap="15.0" maxWidth="1.7976931348623157E308" styleClass="system-grid" vgap="10.0"
+                          AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="100.0">
                     <columnConstraints>
                         <ColumnConstraints maxWidth="180.0" minWidth="180.0" prefWidth="180.0"/>
                         <ColumnConstraints maxWidth="180.0" minWidth="180.0" prefWidth="180.0"/>
@@ -119,36 +120,11 @@
                         <RowConstraints minHeight="10.0" vgrow="SOMETIMES"/>
                         <RowConstraints minHeight="10.0" vgrow="SOMETIMES"/>
                     </rowConstraints>
-                    <Label maxWidth="1.7976931348623157E308" prefHeight="30.0" style="-fx-background-color: #fafafa99;"
-                           text="虚拟机最大内存(MB)" textFill="#575757">
-                        <padding>
-                            <Insets left="20.0"/>
-                        </padding>
-                    </Label>
-                    <Label maxWidth="1.7976931348623157E308" prefHeight="30.0" style="-fx-background-color: #fafafa99;"
-                           text="默认源(勿擅自修改)" textFill="#575757" GridPane.rowIndex="1">
-                        <padding>
-                            <Insets left="20.0"/>
-                        </padding>
-                    </Label>
-                    <Label maxWidth="1.7976931348623157E308" prefHeight="30.0" style="-fx-background-color: #fafafa99;"
-                           text="主题选择" textFill="#575757" GridPane.rowIndex="2">
-                        <padding>
-                            <Insets left="20.0"/>
-                        </padding>
-                    </Label>
-                    <Label maxWidth="1.7976931348623157E308" prefHeight="30.0" style="-fx-background-color: #fafafa99;"
-                           text="主题颜色" textFill="#575757" GridPane.rowIndex="3">
-                        <padding>
-                            <Insets left="20.0"/>
-                        </padding>
-                    </Label>
-                    <Label maxWidth="1.7976931348623157E308" prefHeight="30.0" style="-fx-background-color: #fafafa99;"
-                           text="主题背景" textFill="#575757" GridPane.rowIndex="4">
-                        <padding>
-                            <Insets left="20.0"/>
-                        </padding>
-                    </Label>
+                    <Label maxWidth="1.7976931348623157E308" prefHeight="30.0" text="虚拟机最大内存(MB)"/>
+                    <Label maxWidth="1.7976931348623157E308" prefHeight="30.0" text="默认源(勿擅自修改)" GridPane.rowIndex="1"/>
+                    <Label maxWidth="1.7976931348623157E308" prefHeight="30.0" text="主题选择" GridPane.rowIndex="2"/>
+                    <Label maxWidth="1.7976931348623157E308" prefHeight="30.0" text="主题颜色" GridPane.rowIndex="3"/>
+                    <Label maxWidth="1.7976931348623157E308" prefHeight="30.0" text="主题背景" GridPane.rowIndex="4"/>
                     <TextField fx:id="setting_mxm" prefHeight="30.0" text="1024" GridPane.columnIndex="1"/>
                     <TextField fx:id="setting_resourceUrl" prefHeight="30.0" text="https://dn-stc.qbox.me/soraclient/"
                                GridPane.columnIndex="1" GridPane.rowIndex="1"/>
@@ -173,19 +149,56 @@
                 </GridPane>
             </AnchorPane>
             <AnchorPane fx:id="right_about_sora" visible="false" AnchorPane.bottomAnchor="0.0"
-                        AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0"/>
+                        AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                <Label style="-fx-background-color: #f0f0f0bb;"
+                       text="       空之境界是我后来又取的名字，最初的名字是【第三虚空世界】，但是感觉太中二了，于是就改成了我比较喜欢的一部动漫的名字——《空の境界》&#10;       空の境界的女主角两仪式，也就是默认背景中的美女，她拥有的直死魔眼连接着的是“根源之涡”，也就是一切的“因”。这种新奇的伪哲学概念很吸引我，而且和我之前的虚空世界有一些类似之处。最后，终于，我发现了MC这样一个超高自由度的游戏。完全符合我对虚空世界的改造计划。&#10;       于是，在种种机缘巧合下，我接触了MC开服的相关事项。然后就有了现在的 “空之境界”。&#10;       选择 “空” 这个字，是因为我自己总结的一句话，只因空空如也，故能容纳一切。我希望所有的玩家都能怀着最纯粹的心情，最干净的状态，在空之境界，从 “空空如也” 开始，创造属于自己的 “容纳一切” 。"
+                       wrapText="true" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0"
+                       AnchorPane.topAnchor="30.0">
+                    <font>
+                        <Font size="14.0"/>
+                    </font>
+                    <padding>
+                        <Insets bottom="16.0" left="16.0" right="16.0" top="16.0"/>
+                    </padding>
+                </Label>
+            </AnchorPane>
             <AnchorPane fx:id="right_about_soft" visible="false" AnchorPane.bottomAnchor="0.0"
-                        AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0"/>
+                        AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                <children>
+                    <Label style="-fx-background-color: #f0f0f0bb;"
+                           text="       本软件为“空之境界MC”服务器，简称空境MC（SoraWorld）专用客户端。&#10;       本客户端会自动更新和修复游戏本体。其他任何组织和个人可以使用本软件用于自己服务器，但必须在软件声明和版权声明中表明版权(c)2016 SoraWorld,Himmelt。&#10;       软件在Github开源，虽然我对自己的编程技术没有多大自信，但是至少我实现了我想要的功能。欢迎提交Issues。项目地址 https://github.com/SoraWorld/SoraClient&#10;       如果你也对MC相关编程感兴趣，欢迎加入我的组织————SoraWorld。可以在Github上直接申请加入，也可以联系我本人。"
+                           wrapText="true" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0"
+                           AnchorPane.topAnchor="30.0">
+                        <font>
+                            <Font size="14.0"/>
+                        </font>
+                        <padding>
+                            <Insets bottom="16.0" left="16.0" right="16.0" top="16.0"/>
+                        </padding>
+                    </Label>
+                </children>
+            </AnchorPane>
             <AnchorPane fx:id="right_sponsor" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
                         AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                <ImageView fitHeight="200.0" fitWidth="192.0" preserveRatio="true" AnchorPane.leftAnchor="30.0"
-                           AnchorPane.topAnchor="30.0">
+                <ImageView fitHeight="165.0" layoutX="30.0" layoutY="30.0" preserveRatio="true"
+                           AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="30.0">
                     <Image url="@../images/alipay.png"/>
                 </ImageView>
-                <ImageView fitHeight="200.0" fitWidth="227.0" layoutX="163.0" layoutY="8.0" preserveRatio="true"
+                <ImageView fitHeight="165.0" layoutX="395.0" layoutY="30.0" preserveRatio="true"
                            AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="30.0">
                     <Image url="@../images/weipay.png"/>
                 </ImageView>
+                <Label style="-fx-background-color: #f0f0f0bb;"
+                       text="    (=・ω・=)欢迎各位大佬赞助、打赏、投食，由于资金有限、没有能干的妹妹、没有人气UP主、没有技术高超的OP、没有副本设计师、我懒。。。所以，暂时没有VIP，如果顺利，应该会有一些特殊物品放到点券商店供大家购买。&#10;      服务器的运行必然离不开众人的支持，而且，本服当前的规模还很小，即使是一块钱，对于处于初期阶段的运行来说，都是非常大的动力。所以，服务器的运行很大程度上要依赖大家。如果大家热情够高，对我的支持够大，我肯定会把服务器做得更规模化，来回应大家的热情。&#10;      以目前的情形，本服只接受友情赞助，如果你打算以赞助来换取特权，或者特殊物品，请等到VIP出台时，再来一掷千金吧(｀・ω・´)希望所有人都能愉快地游戏！"
+                       wrapText="true" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="30.0"
+                       AnchorPane.rightAnchor="30.0">
+                    <font>
+                        <Font size="14.0"/>
+                    </font>
+                    <padding>
+                        <Insets bottom="16.0" left="16.0" right="16.0" top="16.0"/>
+                    </padding>
+                </Label>
             </AnchorPane>
         </AnchorPane>
     </center>

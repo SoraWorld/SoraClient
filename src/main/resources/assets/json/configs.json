@@ -1,28 +1,46 @@
 {
-  "config": [
+  "configs": [
     {
       "name": "服务器列表",
-      "sha1": "1234",
-      "path": "servers.dat",
+      "sha1": "a5e25c519c9ce17e24c9df152f4eba2f86beac7c",
+      "path": ".minecraft/servers.dat",
       "keep": true
     },
     {
       "name": "主配置",
-      "sha1": "1234",
-      "path": "options.txt",
+      "sha1": "1afd57ff7492d897d2e0ec6a1c9aca9b91cabbf5",
+      "path": ".minecraft/options.txt",
       "keep": false
     },
     {
       "name": "Optifine配置",
-      "sha1": "1234",
-      "path": "optionsof.txt",
+      "sha1": "b78be79962aa87d58ba758b4e0f9fe982f2dec6a",
+      "path": ".minecraft/optionsof.txt",
       "keep": false
     },
     {
       "name": "Waila采掘显示配置",
-      "sha1": "1234",
-      "path": "config/WailaHarvestability.cfg",
-      "keep": "true"
+      "sha1": "05ccfd11b8adbb2de7842002c984336eecafdbec",
+      "path": ".minecraft/config/WailaHarvestability.cfg",
+      "keep": true
+    },
+    {
+      "name": "R键菜单配置",
+      "sha1": "36adee86b02a9369ace8b7e2c85209b180c915e9",
+      "path": ".minecraft/config/MineMenu/MineMenu.cfg",
+      "keep": true
+    },
+    {
+      "name": "bspkrsCore",
+      "sha1": "26cedd2a345396f929cc321b641527aa1e86574b",
+      "path": ".minecraft/config/bspkrsCore.cfg",
+      "keep": false
+    },
+    {
+      "name": "R键菜单配置",
+      "sha1": "897f07781788fe4bb102411dadd6564b23800056",
+      "path": ".minecraft/MineMenu/menu.json",
+      "keep": true
     }
   ]
 }

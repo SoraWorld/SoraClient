@@ -22,10 +22,7 @@ import javafx.stage.FileChooser;
 import org.apache.commons.io.FileUtils;
 import org.soraworld.soraclient.download.DownloadService;
 import org.soraworld.soraclient.exception.NoJsonNet;
-import org.soraworld.soraclient.minecraft.Assets;
-import org.soraworld.soraclient.minecraft.Minecraft;
-import org.soraworld.soraclient.minecraft.Mods;
-import org.soraworld.soraclient.minecraft.Npcs;
+import org.soraworld.soraclient.minecraft.*;
 import org.soraworld.soraclient.minecraft.gson.Index;
 import org.soraworld.soraclient.system.Reference;
 import org.soraworld.soraclient.system.Settings;
@@ -74,6 +71,7 @@ public class MainFrame implements Initializable {
     public ComboBox<String> setting_theme;
     public ColorPicker setting_colorPicker;
     public Button setting_background;
+
     public Button game_clean_all;
     public Button game_clean_mods;
     public Button game_clean_version;
@@ -127,7 +125,10 @@ public class MainFrame implements Initializable {
                     BufferedWriter bw = new BufferedWriter(new FileWriter(settings));
                     bw.write(jsonString);
                     bw.close();
-                    GameClean(".minecraft/versions/client");
+                    GameClean(".minecraft/versions");
+                    GameClean(".minecraft/config");
+                    GameClean(".minecraft/libraries");
+                    GameClean(".minecraft/mods");
                 }
             } else {
                 String jsonString = GSON.toJson(settingJson);
@@ -135,7 +136,10 @@ public class MainFrame implements Initializable {
                 BufferedWriter bw = new BufferedWriter(new FileWriter(settings));
                 bw.write(jsonString);
                 bw.close();
-                GameClean(".minecraft/versions/client");
+                GameClean(".minecraft/versions");
+                GameClean(".minecraft/config");
+                GameClean(".minecraft/libraries");
+                GameClean(".minecraft/mods");
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -177,10 +181,9 @@ public class MainFrame implements Initializable {
             File background = new File(settingJson.theme.url);
             if (background.exists()) {
                 String url = background.toURI().toURL().toExternalForm();
-                mainFrame.setStyle(mainFrame.getStyle() + "-fx-background-image: url(\"" + url + "\");-fx-background-size: cover;-fx-background-position: center;");
+                mainFrame.setStyle(mainFrame.getStyle() + "-fx-background-image: url(\"" + url + "\");-fx-background-size: cover;");
             }
         } catch (Exception ignored) {
-            System.out.println("ignored load settings");
         }
     }
 
@@ -200,7 +203,7 @@ public class MainFrame implements Initializable {
         File modsDir = new File(path);
         if (modsDir.exists() && modsDir.isDirectory()) {
             try {
-                System.out.println("deleting game dir");
+                //System.out.println("deleting game dir");
                 FileUtils.deleteDirectory(modsDir);
             } catch (IOException e) {
                 e.printStackTrace();
@@ -227,7 +230,7 @@ public class MainFrame implements Initializable {
         } else {
             stylesheets.add(getClass().getResource("/assets/css/" + settingJson.theme.id + ".css").toExternalForm());
         }
-        System.out.println("stylesheet:" + mainFrame.getStylesheets());
+        //System.out.println("stylesheet:" + mainFrame.getStylesheets());
         SaveSettings();
     }
 
@@ -247,7 +250,7 @@ public class MainFrame implements Initializable {
                 fileChooser.setInitialDirectory(background.getParentFile());
             }
         } catch (Exception ignored) {
-            System.out.println("ignored theme click");
+            //System.out.println("ignored theme click");
         }
 
         fileChooser.setTitle("选择一张背景图片");
@@ -277,6 +280,10 @@ public class MainFrame implements Initializable {
     public void WindowDragged(MouseEvent mouseEvent) {
         mainStage.setX(mouseEvent.getScreenX() - PosX);
         mainStage.setY(mouseEvent.getScreenY() - PosY);
+    }
+
+    public void WindowClicked(MouseEvent mouseEvent) {
+        mainFrame.requestFocus();
     }
 
     public void LeftMenuClicked(MouseEvent mouseEvent) {
@@ -347,7 +354,7 @@ public class MainFrame implements Initializable {
                         WGet wGet = new WGet(new URL(Reference.ResourcesURL + ".minecraft/versions/client/client.json"), json);
                         wGet.download();
                     } else {
-                        System.out.println("no network");
+                        //System.out.println("no network");
                         if (!json.exists()) {
                             throw new NoJsonNet();
                         }
@@ -357,6 +364,7 @@ public class MainFrame implements Initializable {
                         Minecraft minecraft = GSON.fromJson(FileUtils.readFileToString(json, Charset.defaultCharset()), Minecraft.class);
                         List<Index> indices = new ArrayList<>();
                         updateTitle("正在获取版本信息...");
+                        System.out.println("正在获取版本信息...");
                         indices.clear();
                         /// 检查版本是否更新
                         if (!settingJson.version.equals(minecraft.version)) {
@@ -376,6 +384,7 @@ public class MainFrame implements Initializable {
                             updateProgress(jsonService.getProgress(), 1);
                         }
                         updateTitle("正在更新库文件...");
+                        System.out.println("正在更新库文件...");
                         indices.clear();
                         DownloadService libraryService = new DownloadService();
                         List<String> command = minecraft.getLaunchCmd(userbox.getText(), settingJson.userToken.uuid, setting_mxm.getText(), indices);
@@ -388,6 +397,7 @@ public class MainFrame implements Initializable {
                             updateProgress(libraryService.getProgress(), 1);
                         }
                         updateTitle("正在更新本地库文件...");
+                        System.out.println("正在更新本地库文件...");
                         indices.clear();
                         DownloadService nativeService = new DownloadService();
                         minecraft.fetchNative(indices);
@@ -400,6 +410,7 @@ public class MainFrame implements Initializable {
                             updateProgress(nativeService.getProgress(), 1);
                         }
                         updateTitle("正在更新资源文件...");
+                        System.out.println("正在更新资源文件...");
                         indices.clear();
                         File assetJson = new File(".minecraft/assets/indexes/" + minecraft.assets + ".json");
                         Assets assets = GSON.fromJson(FileUtils.readFileToString(assetJson, Charset.defaultCharset()), Assets.class);
@@ -418,6 +429,7 @@ public class MainFrame implements Initializable {
                             updateProgress(assetService.getProgress(), 1);
                         }
                         updateTitle("正在更新模组文件...");
+                        System.out.println("正在更新模组文件...");
                         indices.clear();
                         File modJson = new File(".minecraft/mods/mods.json");
                         Mods mods = GSON.fromJson(FileUtils.readFileToString(modJson, Charset.defaultCharset()), Mods.class);
@@ -431,7 +443,22 @@ public class MainFrame implements Initializable {
                             Thread.sleep(50);
                             updateProgress(modService.getProgress(), 1);
                         }
+                        updateTitle("正在更新配置文件...");
+                        System.out.println("正在更新配置文件...");
+                        indices.clear();
+                        File configJson = new File(".minecraft/config/configs.json");
+                        Configs configs = GSON.fromJson(FileUtils.readFileToString(configJson, Charset.defaultCharset()), Configs.class);
+                        DownloadService configService = new DownloadService();
+                        configs.download(indices);
+                        if (hasNetwork())
+                            indices.forEach(configService::addIndex);
+                        configService.shutdown();
+                        while (!configService.isTerminated()) {
+                            Thread.sleep(50);
+                            updateProgress(configService.getProgress(), 1);
+                        }
                         updateTitle("正在解压本地库文件...");
+                        System.out.println("正在解压本地库文件...");
                         ExecutorService unzipService = Executors.newCachedThreadPool();
                         File nativeDir = new File(".minecraft/libraries/natives");
                         File[] nativeFiles = nativeDir.listFiles();
@@ -446,6 +473,7 @@ public class MainFrame implements Initializable {
                             Thread.sleep(50);
                         }
                         updateTitle("正在启动游戏本体...");
+                        System.out.println("正在启动游戏本体...");
                         updateProgress(1, 1);
                         new Thread(() -> {
                             try {
@@ -462,13 +490,26 @@ public class MainFrame implements Initializable {
                         }).start();
                         updateTitle("游戏已经启动,祝您游戏愉快*_^");
                         // 更新NPC资源
+                        System.out.println("游戏已经启动,更新NPC资源...");
                         indices.clear();
                         File npcJson = new File(".minecraft/customnpcs/npcs.json");
                         Npcs npcs = GSON.fromJson(FileUtils.readFileToString(npcJson, Charset.defaultCharset()), Npcs.class);
                         DownloadService npcService = new DownloadService();
                         npcs.download(indices);
-                        indices.forEach(npcService::addIndex);
+                        if (hasNetwork())
+                            indices.forEach(npcService::addIndex);
                         npcService.shutdown();
+                        // 更新材质包资源
+                        System.out.println("更新材质包资源...");
+                        indices.clear();
+                        File packJson = new File(".minecraft/resourcepacks/packs.json");
+                        Packs packs = GSON.fromJson(FileUtils.readFileToString(packJson, Charset.defaultCharset()), Packs.class);
+                        DownloadService packService = new DownloadService();
+                        packs.download(indices);
+                        if (hasNetwork())
+                            indices.forEach(packService::addIndex);
+                        packService.shutdown();
+
                         System.out.println("===shut down=====");
                         Platform.runLater(() -> WindowClose());
                         System.out.println("Task Finished!");
@@ -484,7 +525,4 @@ public class MainFrame implements Initializable {
     }
 
 
-    public void WindowClicked(MouseEvent mouseEvent) {
-        mainFrame.requestFocus();
-    }
 }
